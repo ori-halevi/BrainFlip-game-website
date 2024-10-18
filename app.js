@@ -22,8 +22,12 @@ loginBtn.addEventListener('click', function() {
     CheckLoginDetails(username, password).then(exists => {
         if (exists) {
             console.log("Login successful.");
+            const userInfo = exists;
             // Enter GameSettingsPage/index.html
+            localStorage.setItem('user', JSON.stringify(userInfo));
             window.location.href = "GameSettingsPage/index.html";
+            
+
 
         } else {
             console.log("Login failed.");
@@ -66,11 +70,15 @@ async function CheckLoginDetails(username, password) {
         const response = await fetch('./usersDB.json');
         const usersInfo = await response.json();
 
-        const userExists = usersInfo.some(user => user.username === username && user.password === password);
-        return userExists;
+        // חיפוש המשתמש ברשימה
+        const user = usersInfo.find(user => user.username === username && user.password === password);
+
+        // החזרת אובייקט המשתמש אם נמצא, אחרת החזרת null
+        return user || false;
     } catch (error) {
         console.error('Error checking login details:', error);
-        return false;
+        return null;
     }
 }
+
 

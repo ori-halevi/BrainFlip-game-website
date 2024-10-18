@@ -26,7 +26,7 @@
                 <form action="#" id="formSettings" class="forms">
 
                     <div class="formH2Div">
-                        <p>Game settings</p>
+                        <h2>Hello <span id="usernameDisplay"></span></h2>
                     </div>
 
                     <div id="cardsAmountDiv" class="labelInputDiv">
@@ -47,7 +47,26 @@
                     </div>
                     <input type="submit" id="startGameBtn" class="submitBtn" value="Start game">
 
+                    <button id="scoreboardBtn">Scoreboard</button>
                 </form>
+
+
+                <div id="scoreboardDiv" style="display: none;">
+                    <div id="scoreboardH2Div">
+                        <h2>Scoreboard</h2>
+                    </div>
+                    <div>
+                        <ul id="scoreboardList" type="none" ></ul>
+                    </div>
+                    <div>
+                        <button id="backBtn">Back to menu</button>
+
+                    </div>
+                </div>
+
+
+
+
             </div>
 
             <!-- <div id="topTenDiv">

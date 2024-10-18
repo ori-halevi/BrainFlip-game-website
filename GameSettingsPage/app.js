@@ -4,6 +4,21 @@ const timeLimit = document.getElementById("timeLimitSelect");
 const startGameBtn = document.getElementById("startGameBtn");
 
 
+
+
+
+const userData = localStorage.getItem('user');
+const currentUser = userData ? JSON.parse(userData) : { username: 'Guest' };
+document.getElementById('usernameDisplay').textContent = currentUser.username;
+
+
+const scoreboardBtn = document.getElementById("scoreboardBtn");
+scoreboardBtn.addEventListener("click", function () {
+    document.getElementById("formSettings").style.display = "none";
+    document.getElementById("scoreboardDiv").style.display = "block";
+});
+
+
 insertUsersToLocalStorage();
 insertTopTen();
 
@@ -50,6 +65,6 @@ function getTopTen(users) {
     topTenUsers.forEach(user => {
         const li = document.createElement("li");
         li.textContent = `${user["highest-score"]}⭐: ${user.username}`;
-        document.getElementById("topTenList").appendChild(li);
+        document.getElementById("scoreboardList").appendChild(li);
     });
 }

@@ -3,7 +3,7 @@
         "username": "Ori",
         "password": "1234",
         "email": "somemail@gmail.com",
-        "highest-score": 100
+        "highest-score": 311
     },
     {
         "username": "yossi",
@@ -30,8 +30,8 @@
         "highest-score": 180
     },
     {
-        "username": "avi_king",
-        "password": "avi12345",
+        "username": "Anya",
+        "password": "12345",
         "email": "aviking@gmail.com",
         "highest-score": 220
     },
@@ -48,7 +48,7 @@
         "highest-score": 160
     },
     {
-        "username": "danMan",
+        "username": "Omer",
         "password": "dannyPass",
         "email": "danman123@outlook.com",
         "highest-score": 250
