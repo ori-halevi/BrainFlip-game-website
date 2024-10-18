@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrainFlip setting page</title>
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./FruitThemeStyle.css" />
+    <link rel="stylesheet" href="../FontsStyle.css" />
+    <link rel="stylesheet" href="../FormsStyle.css" />
     <!-- <script src="exercise1.js"></script> -->
 </head>
 <body>
@@ -14,19 +15,21 @@
         <div id="headerDiv">
 
             <div id="logoDiv">
-                <h1 id="logo">BrainFlip</h1>
+                <h1 id="logo" class="logo-font">BrainFlip</h1>
             </div>
         </div>
 
         <div id="bodyDiv">
-            <div id="mascotIImageDiv"></div>
+            <!-- <div id="mascotIImageDiv"></div> -->
 
             <div id="formSettingsDiv">
-                <form action="#" id="formSettings">
+                <form action="#" id="formSettings" class="forms">
 
-                    <p>Game settings</p>
+                    <div class="formH2Div">
+                        <p>Game settings</p>
+                    </div>
 
-                    <div id="cardsAmountDiv">
+                    <div id="cardsAmountDiv" class="labelInputDiv">
                         <label for="cardsAmountSelect">Cards amount: </label>
                         <select name="" id="cardsAmountSelect">
                             <option value="10">10</option>
@@ -34,7 +37,7 @@
                             <option value="20">20</option>
                         </select>
                     </div>
-                    <div id="timeLimitDiv">
+                    <div id="timeLimitDiv" class="labelInputDiv">
                         <label for="timeLimitSelect">Time limit: </label>
                         <select name="" id="timeLimitSelect">
                             <option value="5">5</option>
@@ -42,12 +45,12 @@
                             <option value="15">15</option>
                         </select>
                     </div>
-                    <input type="submit" id="startGameBtn">
+                    <input type="submit" id="startGameBtn" class="submitBtn" value="Start game">
 
                 </form>
             </div>
 
-            <div id="topTenDiv">
+            <!-- <div id="topTenDiv">
                 <div id="topTenParagraphDiv">
                     <p>Top 10:</p>
                 </div>
@@ -56,7 +59,7 @@
                         
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 

@@ -1,0 +1,44 @@
+.forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #F2F2F2;
+    gap: 20px;
+    margin: 20px;
+    padding: 20px;   ;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    width: 20vw;
+}
+
+.forms .formH2Div {
+    text-align: left;
+    font-size: 1rem;
+}
+
+.forms .labelInputDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.forms input, .forms select {
+    padding: 0 15px;
+    height: 35px;
+    border-radius: 9px;
+    border: 1px solid black;
+}
+
+
+.forms .submitBtn {
+    background-color: #F7241D;
+    color: white;
+    border: none;
+}

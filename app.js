@@ -13,7 +13,7 @@ document.getElementById('backToLogin').addEventListener('click', function(event)
 const formLogin = document.getElementById('formLogin');
 let invalidLoginAlert
 
-const loginBtn = document.getElementById('submitBtn');
+const loginBtn = document.getElementById('loginBtn');
 const signUpBtn = document.getElementById('signUpBtn');
 
 loginBtn.addEventListener('click', function() {

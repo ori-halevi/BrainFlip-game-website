@@ -19,7 +19,7 @@ div {
     align-items: stretch;
     min-height: 99vh;
     justify-content: space-between;
-    /* background-image: url("../dep/light-green-wallpaper.jpg"); */
+    background-image: url("../dep/pexels-didsss-2508565.jpg");
     background-color: rgb(204, 255, 153);
     background-size: cover;
     background-position: center;
@@ -35,10 +35,11 @@ div {
 #logoDiv {
     display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
+    margin: 20px 20px; 
 }
 #logo {
-    font-size: 5rem;
+    font-size: 8rem;
     margin: 0;
 }
 
@@ -49,21 +50,9 @@ div {
     justify-content: space-around;
 }
 
-#mascotIImageDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 20px;
 
-    background-image: url("../dep/mascot.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: calc(357px * 0.6);
-    height: calc(699px * 0.6);
-}
 
-#formSettings {
+/* #formSettings {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,15 +68,15 @@ div {
     height: 40vh;
     font-size: 1.5rem;
     text-align: center;
-}
+} */
 
-#cardsAmountDiv, #timeLimitDiv {
+/* #cardsAmountDiv, #timeLimitDiv {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 10px;
     padding: 10px;
-}
+} */
 
 
 #topTenParagraphDiv {
@@ -124,7 +113,6 @@ div {
     /* position: absolute; */
     /* bottom: 0; */
     width: 100%;
-    height: 10vh;
-    background-color: var(--footer-color);
+    height: 10vh;;
     
 }
