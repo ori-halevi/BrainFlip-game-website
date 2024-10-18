@@ -23,15 +23,41 @@ body {
     flex-direction: column;
     align-items: stretch;
     min-height: 99vh;
-    background-color: var(--background-color);
 }
 
 #headerDiv {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     
 }
+
+
+#pauseDiv {
+    width: 30px;
+    height: 30px;
+    border: 3px solid white;
+    border-radius: 100%;
+    color: white;
+    margin: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1rem;
+}
+
+#timerDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: green;
+    width: 200px;
+    height: 50px;
+}
+
 
 
 
@@ -113,29 +139,9 @@ body {
 
 
 
-#pauseDiv {
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
-    border-radius: 30%;
-    background-color: green;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    font-size: 1.5rem;
-}
 
-#timerDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    color: green;
-    width: 200px;
-    height: 50px;
-}
 
 
 .dark-screen {

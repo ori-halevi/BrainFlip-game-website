@@ -1,6 +1,9 @@
 const cardsAmount = localStorage.getItem('cardsAmount');
-// const cardsAmount = 2;
+const timeLimit = localStorage.getItem('timeLimit');
 const cardsContainer = document.getElementById('cardsContainer');
+
+const scoreElement = document.getElementById('scoreDiv');
+scoreElement.textContent = `Your score: 0`;
 
 let userMidTurn = false;
 
@@ -19,6 +22,7 @@ let movesCounter = 0;
 
 let waitForAnimation = false;
 
+scoreElement.textContent = `Your score: 0`;
 
 
 function generateUniqueRandomNumbers(count) {
@@ -188,11 +192,11 @@ function handleSecondCardClick() {
 
     if (previousCardInfo[0] === currentCardInfo[0]) {
         console.log("match");
-        score += 1 * (5 - difficultyLevel);
+        score += 21 - timeLimit + (cardsAmount - 10);
+        scoreElement.textContent = `Your score: ${score}`;
         matchs++;
         console.log(matchs);
         
-        console.log("score:", score);
         waitForAnimation = false;
 
         // white color diabled cards
