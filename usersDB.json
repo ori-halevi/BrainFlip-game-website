@@ -1,0 +1,74 @@
+[
+    {
+        "username": "Ori",
+        "password": "1234",
+        "email": "somemail@gmail.com",
+        "highest-score": 100
+    },
+    {
+        "username": "yossi",
+        "password": "4321",
+        "email": "somemail2@gmail.com",
+        "highest-score": 150
+    },
+    {
+        "username": "lior123",
+        "password": "pass123",
+        "email": "lior@mail.com",
+        "highest-score": 200
+    },
+    {
+        "username": "ronny98",
+        "password": "ronnyStrong98",
+        "email": "ronny98@hotmail.com",
+        "highest-score": 120
+    },
+    {
+        "username": "maya2024",
+        "password": "mayaIsBest",
+        "email": "maya2024@yahoo.com",
+        "highest-score": 180
+    },
+    {
+        "username": "avi_king",
+        "password": "avi12345",
+        "email": "aviking@gmail.com",
+        "highest-score": 220
+    },
+    {
+        "username": "eden987",
+        "password": "passEden",
+        "email": "eden987@walla.co.il",
+        "highest-score": 190
+    },
+    {
+        "username": "shiran_super",
+        "password": "shirTop",
+        "email": "shiran_super@gmail.com",
+        "highest-score": 160
+    },
+    {
+        "username": "danMan",
+        "password": "dannyPass",
+        "email": "danman123@outlook.com",
+        "highest-score": 250
+    },
+    {
+        "username": "gilad123",
+        "password": "giladStrong",
+        "email": "gilad1@ynet.co.il",
+        "highest-score": 170
+    },
+    {
+        "username": "netaCool",
+        "password": "coolPass2024",
+        "email": "neta_cool@israelmail.com",
+        "highest-score": 140
+    },
+    {
+        "username": "omerZ",
+        "password": "zomer234",
+        "email": "omerZ@gmail.com",
+        "highest-score": 130
+    }
+]

@@ -1,0 +1,150 @@
+:root {
+    --footer-color:  rgb(115, 235, 115);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* div {
+    border: 0.5px solid red;
+    padding: 1px;
+    margin: 1px;
+} */
+
+#mainContainerDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    min-height: 99vh;
+
+    background-image: url("./dep/pexels-didsss-2508565.jpg");
+    background-size: 100% 100%; /* מותח את התמונה לגודל ה-div */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#headerDiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#logoDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 20px; 
+}
+#logo {
+    font-size: 9rem;
+    margin: 0;
+}
+
+#bodyDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+}
+
+
+
+
+
+#formLogin {
+    margin: 20px;
+    padding: 20px;   ;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    width: 20vw;
+    /* height: 40vh; */
+    font-size: 1.5rem;
+
+    
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #F2F2F2;
+    gap: 20px;
+}
+
+.forms .formH2Div {
+    text-align: left;
+    font-size: 1rem;
+}
+
+.forms .labelInputDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.forms input {
+    padding: 0 15px;
+    height: 35px;
+    border-radius: 9px;
+    border: 1px solid black;
+}
+
+
+.forms #submitBtn {
+    background-color: #F7241D;
+    color: white;
+    border: none;
+}
+
+
+#forgotPasswordDiv {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+#forgotPassword {
+    text-decoration: none;
+    color: black;
+    font-size: 0.7rem;
+    color: #F7241D;
+}
+
+#createAccount {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+#formSignUp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    width: 20vw;
+    height: 40vh;
+    font-size: 1.5rem;
+    text-align: center;
+    
+}

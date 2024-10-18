@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainFlip setting page</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./FruitThemeStyle.css" />
+    <!-- <script src="exercise1.js"></script> -->
+</head>
+<body>
+    <div id="mainContainerDiv">
+
+        <div id="headerDiv">
+
+            <div id="logoDiv">
+                <h1 id="logo">BrainFlip</h1>
+            </div>
+        </div>
+
+        <div id="bodyDiv">
+            <div id="mascotIImageDiv"></div>
+
+            <div id="formSettingsDiv">
+                <form action="#" id="formSettings">
+
+                    <p>Game settings</p>
+
+                    <div id="cardsAmountDiv">
+                        <label for="cardsAmountSelect">Cards amount: </label>
+                        <select name="" id="cardsAmountSelect">
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <div id="timeLimitDiv">
+                        <label for="timeLimitSelect">Time limit: </label>
+                        <select name="" id="timeLimitSelect">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select>
+                    </div>
+                    <input type="submit" id="startGameBtn">
+
+                </form>
+            </div>
+
+            <div id="topTenDiv">
+                <div id="topTenParagraphDiv">
+                    <p>Top 10:</p>
+                </div>
+                <div>
+                    <ul id="topTenList" type="none" >
+                        
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footerDiv">
+            
+        </div>
+
+    </div>
+    
+    <script src="./app.js"></script>
+</body>
+</html>

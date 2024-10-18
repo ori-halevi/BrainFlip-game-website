@@ -1,0 +1,14 @@
+#mainContainerDiv {
+    background-image: url("../dep/FruitTheme/Pears_and_apples_background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.back {
+    background-image: url("../dep/AutumnTheme/card.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

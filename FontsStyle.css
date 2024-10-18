@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'IstokWeb';
+    src: url('/fonts/IstokWeb-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Jomhuria';
+    src: url('/fonts/Jomhuria-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'IstokWeb', sans-serif;
+}
+
+.logo-font {
+    font-family: 'Jomhuria', sans-serif;
+    letter-spacing: 7px;
+}
