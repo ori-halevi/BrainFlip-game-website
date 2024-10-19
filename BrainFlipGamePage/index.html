@@ -6,7 +6,8 @@
         <title>BrainFlip Game page</title>
         <link rel="stylesheet" href="./style.css" />
         <link rel="stylesheet" href="./AutumnThemeStyle.css" />
-        <!-- <script src="exercise1.js"></script> -->
+        <link rel="stylesheet" href="./gameStopOrEnded.css" />
+        <link rel="stylesheet" href="../FontsStyle.css" />
     </head>
 <body>
     <div class="background-image">
@@ -16,8 +17,9 @@
 
         <div id="headerDiv">
             <div id="timerDiv"></div>
+            <div id="movesLeftDiv"></div>
             <div id="scoreDiv"></div>
-            <div id="pauseDiv">| |</div>
+            <div id="pauseDiv"></div>
 
         </div>
 
@@ -31,9 +33,14 @@
         </div>
 
     </div>
+    <audio id="gameAudio" src="../dep/Music/game-music-loop-2-144037.mp3" loop></audio>
+    <audio id="gameAudioMatch" src="../dep/Music/match.mp3"></audio>
+    <audio id="gameAudioBonus" src="../dep/Music/game-bonus-144751.mp3"></audio>
 
     <script src="./app.js"></script>
     <script src="./appTimer.js"></script>
     <script src="./gameEnded.js"></script>
+    <script src="./appHeader.js"></script>
+    <script src="../eng-heb-dict.js"></script>
 </body>
 </html>

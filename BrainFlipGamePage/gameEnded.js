@@ -21,7 +21,6 @@ function handleGameWon() {
     stopGameTimer();
     createEndScreen("You won!");
 
-
 }
 
 
@@ -31,6 +30,7 @@ function handleGameWon() {
 function handleGameLost(params) {
     // Stop the game timer
     stopGameTimer();
+    gameAudio.pause();
     createEndScreen("Game Over");
 }
 
@@ -73,4 +73,14 @@ function createEndScreen(titleOnScreen) {
         window.history.back();
     });
     navBtnsDiv.appendChild(backToMenuBtn);
+}
+
+
+
+function removePointsFromUserScore(number) {
+    if (score - number < 0) {
+        score = 0;
+    } else {
+        score -= number;
+    }
 }

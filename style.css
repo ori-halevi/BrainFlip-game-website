@@ -17,12 +17,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
     min-height: 99vh;
-
+    justify-content: space-between;
     background-image: url("./dep/pexels-didsss-2508565.jpg");
-    background-size: 100% 100%; /* מותח את התמונה לגודל ה-div */
-    background-position: center;
+    background-size: cover; /* מותח את התמונה לגודל ה-div */
+    background-position: top;
     background-repeat: no-repeat;
 }
 
@@ -56,11 +55,57 @@ body {
 
 
 
-#formLogin {
-    /* height: 40vh; */
 
-    
+
+
+
+#logo {
+    display: flex;
+    color: red; /* צבע האותיות */
+    text-shadow: 
+        -4px -4px 0 #000,  
+         4px -4px 0 #000,
+        -4px  4px 0 #000,
+         4px  4px 0 #000; /* מסגרת מסביב לאותיות בצבע שחור */
+    color: red; /* כל האותיות בצבע אדום */
 }
+
+.insta-flipped {
+    display: flex;
+    padding-right: 2px;
+    transform: scaleX(-1);
+}
+
+.flipped {
+    display: flex;
+    padding-left: 2px;
+    animation: flipAnimation 1s ease-in-out forwards;
+}
+
+.F { animation-delay: 0s; }
+.L { animation-delay: 0.5s; }
+.I { animation-delay: 1s; }
+.P { animation-delay: 1.5s; }
+
+@keyframes flipAnimation {
+    0% { transform: scaleX(1); }
+    33% { transform: scaleX(1); }
+    100% { transform: scaleX(-1); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -80,7 +125,7 @@ body {
     color: #F7241D;
 }
 
-#createAccount {
+#createAccount, #backToLogin {
     text-decoration: none;
     color: black;
     font-size: 1rem;
@@ -88,21 +133,165 @@ body {
 }
 
 
-#formSignUp {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#startGameBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    background-color: rgb(115, 235, 115);
+    color: white;
+    height: 40px;
+}
+
+
+
+#scoreboardBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    border-radius: 10px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    height: 35px;
+}
+
+
+
+
+#scoreboardDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin: 20px;
-    padding: 20px;
     border: 1px solid black;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #F2F2F2;
+    gap: 20px;
+    margin: 20px;
+    padding: 20px;   ;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    width: 20vw;
-    height: 40vh;
-    font-size: 1.5rem;
-    text-align: center;
+}
+
+#scoreboardH2Div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+#scoreboardH2Div h2{
+    margin: 0px;
+}
+#scoreboardList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 20px;
+    padding: 0;
+    font-size: 1.2rem;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* CSS for the toggle switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: calc(60px * 0.5);
+    height: calc(34px * 0.5);
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-switch-slider:before {
+    position: absolute;
+    content: "";
+    height: calc(26px * 0.5);
+    width: calc(26px * 0.5);
+    left: calc(4px * 0.5);
+    bottom: calc(4px * 0.5);
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Change background color when checked */
+input:checked + .toggle-switch-slider {
+    background-color: rgb(115, 235, 115);
+}
+
+/* Move the slider when checked */
+input:checked + .toggle-switch-slider:before {
+    transform: translateX(calc(26px * 0.5));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#footerDiv {
+    display: flex;
+    /* position: absolute; */
+    /* bottom: 0; */
+    width: 100%;
+    height: 10vh;;
     
 }

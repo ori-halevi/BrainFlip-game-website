@@ -1,9 +1,10 @@
+
 const cardsAmount = localStorage.getItem('cardsAmount');
-const timeLimit = localStorage.getItem('timeLimit');
 const cardsContainer = document.getElementById('cardsContainer');
 
-const scoreElement = document.getElementById('scoreDiv');
-scoreElement.textContent = `Your score: 0`;
+const gameAudio = document.getElementById('gameAudio');
+const gameAudioMatch = document.getElementById('gameAudioMatch');
+const gameAudioBonus = document.getElementById('gameAudioBonus');
 
 let userMidTurn = false;
 
@@ -11,7 +12,6 @@ const easyMode = 3;
 const mediumMode = 2;
 const hardMode = 1.5;
 let difficultyLevel = easyMode;
-let numberOfTurns = difficultyLevel * cardsAmount;
 
 let previousCardInfo = [null, null];
 let currentCardInfo = [null, null];
@@ -22,22 +22,22 @@ let movesCounter = 0;
 
 let waitForAnimation = false;
 
-scoreElement.textContent = `Your score: 0`;
 
 
-function generateUniqueRandomNumbers(count) {
-    const numbers = [];
-    while (numbers.length < count) {
-        const randomNum = Math.floor(Math.random() * 90) + 10; // מייצר מספר דו ספרתי (10-99)
-        if (!numbers.includes(randomNum)) {
-            numbers.push(randomNum); // מוסיף רק אם המספר לא קיים במערך
-        }
-    }
-    return numbers;
+window.onload = () => {
+    gameAudio.play();
+    gameAudio.volume = 0.4;
+    MainSpreadCards();
+    updateMovesLeftDisplay();
+    updateScoreDisplay();
+    displayTimer();
 }
 
 
-function createCard(cardID, cardCoupleName) {
+
+
+
+function createCard(cardID, cardCoupleName, engHebWordsKeyValue = null) {
     
     let card = document.createElement('div');
     card.classList.add('cardAreaFlip');
@@ -53,12 +53,28 @@ function createCard(cardID, cardCoupleName) {
 
     let cardFront = document.createElement('div');
     cardFront.classList.add('card', 'front');
+    let cardFrontImg = document.createElement('img');
+    cardFrontImg.src = `../dep/AutumnTheme/cardsFronts/${cardCoupleName}.png`;
 
-    let cardFrontText = document.createTextNode(card.dataset.couple);
-    cardFront.appendChild(cardFrontText);
+    cardFrontImg.classList.add('cardImg');
+    cardFront.appendChild(cardFrontImg);
 
-    // let cardBackText = document.createTextNode(card.dataset.couple + " " + card.dataset.id);
-    // cardBack.appendChild(cardBackText); // למחוקקקקק
+    // let cardFrontText = document.createTextNode(card.dataset.couple);
+    // cardFront.appendChild(cardFrontText);
+
+    if (localStorage.getItem('learnEnglish') === 'true') {
+        const wordsDiv = document.createElement('div');
+        wordsDiv.classList.add('words-div');
+        cardBack.appendChild(wordsDiv);
+
+        if (card.dataset.id % 2 === 0) {
+            let cardBackText = document.createTextNode(`${engHebWordsKeyValue.key}` );
+            wordsDiv.appendChild(cardBackText);
+        } else {
+            let cardBackText = document.createTextNode(`${engHebWordsKeyValue.value}`);
+            wordsDiv.appendChild(cardBackText);
+        }
+    }
 
     card.appendChild(cardFront);
 
@@ -76,20 +92,21 @@ function shuffleArray(array) {
 
 
 function MainSpreadCards() {
-    cardsCouples = generateUniqueRandomNumbers(cardsAmount);
-    
+
     const cardsArray = [];  // מערך לאחסון הקלפים לפני הוספה ל-DOM
     let j = 0; // משתנה שיגדל ב-1
     let i = 0; // משתנה שיגדל ב-2
     
     for (let count = 0; count < cardsAmount; count++) {
+        // get random word in english and hebrew     
+        const engHebWordsKeyValue = getRandomKeyAndRemoveFromStorage('dictionary');
         
      // create first card
-        let firstCard = createCard(i, j);
+        let firstCard = createCard(i, j, engHebWordsKeyValue);
         cardsArray.push(firstCard); // Add card into the array
         
         // create first card
-        let secondCard = createCard(i + 1, j);
+        let secondCard = createCard(i + 1, j, engHebWordsKeyValue);
         cardsArray.push(secondCard); // Add card into the array
 
         j++; // הגדלה ב-1
@@ -161,6 +178,7 @@ function onUserClickCard(card) {
         
         userMidTurn = !userMidTurn;
         numberOfTurns--;
+        updateMovesLeftDisplay();
     }
 
     console.log("matchs", matchs);
@@ -172,7 +190,7 @@ function onUserClickCard(card) {
         return;
     }
     // Check if the game is over
-    if (numberOfTurns < 0) {
+    if (numberOfTurns < 1) {
         console.log("Game Over");
         handleGameLost();
         return;
@@ -192,16 +210,17 @@ function handleSecondCardClick() {
 
     if (previousCardInfo[0] === currentCardInfo[0]) {
         console.log("match");
-        score += 21 - timeLimit + (cardsAmount - 10);
-        scoreElement.textContent = `Your score: ${score}`;
+        score += 21 - (timeLimit / 60) + (cardsAmount - 10);
+        updateScoreDisplay();
         matchs++;
+        gameAudioMatch.play();
         console.log(matchs);
         
         waitForAnimation = false;
 
         // white color diabled cards
         cards.forEach(card => {
-            card.style.border = "0px solid white";
+            card.style.border = "2px solid transparent";
         });
 
     } else {
@@ -216,7 +235,7 @@ function handleSecondCardClick() {
 
             // white color diabled cards
             cards.forEach(card => {
-                card.style.border = "0px solid white";
+                card.style.border = "2px solid transparent";
             });
 
         } , 1000);
@@ -227,5 +246,3 @@ function handleSecondCardClick() {
 
 
 
-
-MainSpreadCards();

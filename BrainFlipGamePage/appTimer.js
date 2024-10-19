@@ -1,6 +1,7 @@
 let timerInterval;
 let secondsElapsed = 0;
 const timeLimit = localStorage.getItem('timeLimit') * 60;
+const timerDiv = document.getElementById('timerDiv');
 
 /**
  * Starts the game timer when the game page is loaded.
@@ -12,7 +13,7 @@ function startGameTimer() {
 
     timerInterval = setInterval(() => {
         secondsElapsed++;
-        displayTimer();
+        displayTimer(); // Added to update the display each second
         checkIfTimeUp();
     }, 1000); // Every 1 second
 }
@@ -24,11 +25,8 @@ function displayTimer() {
     const remainingTime = timeLimit - secondsElapsed;
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
-    
-    const timerElement = document.getElementById('timerDiv');
-    if (timerElement) {
-        timerElement.textContent = `Time Remaining: ${minutes}m ${seconds}s`;
-    }
+
+    timerDiv.innerHTML = `Time Remaining:<br>${minutes}m ${seconds}s`;
 }
 
 /**
@@ -55,4 +53,22 @@ function checkIfTimeUp() {
         console.log("Time's up!");
         handleGameLost();
     }
+}
+
+/**
+ * Pauses the game timer.
+ */
+function pauseGameTimer() {
+    stopGameTimer(); // Call the stop function to clear the interval
+}
+
+/**
+ * Resumes the game timer.
+ */
+function resumeGameTimer() {
+    timerInterval = setInterval(() => {
+        secondsElapsed++;
+        displayTimer(); // Update the display
+        checkIfTimeUp();
+    }, 1000); // Every 1 second
 }

@@ -12,64 +12,144 @@
 <body>
     <div id="mainContainerDiv">
 
-        <!-- <div id="headerDiv">
-
-            <div id="logoDiv">
-                <h1 id="logo" class="logo-font">BrainFlip</h1>
+        <div id="headerDiv">
+            <div id="logoDiv" style="display: none;">
+                <h1 id="logo" class="logo-font">
+                    Brain<span class="insta-flipped">pilF</span>
+                </h1>
             </div>
+        </div>
+        
+        
+        
+        
 
-        </div> -->
+        <div id="notification" style="display:none; background-color: #f0c674; padding: 10px; border: 1px solid #d9a300;"></div>
 
         <div id="bodyDiv">
 
-            <div id="formLoginDiv">
-                <form id="formLogin" class="forms" action="#">
+            <div id="welcomLogoDiv">
+                <h1 id="logo" class="logo-font">
+                    <span style="color: white;">Welcome to&nbsp;</span>
+                    <span>Brain</span>
+                    <span class="flipped F">F</span>
+                    <span class="flipped L">l</span>
+                    <span class="flipped I">i</span>
+                    <span class="flipped P">p</span>
+                </h1>
+            </div>
 
+            <div id="allFormsDiv">
+
+                <form action="#" id="formLogin" class="forms" style="display: none;" onsubmit="return validateLoginForm();">
+            
                     <div class="formH2Div">
                         <h2>Login details</h2>
                     </div>
-
+            
                     <div class="labelInputDiv">
                         <label for="loginUsername">Username</label>
-                        <input type="text" id="loginUsername" placeholder="Enter your username" >
+                        <input type="text" id="loginUsername" placeholder="Enter your username">
                     </div>
-
+            
                     <div class="labelInputDiv">
                         <label for="loginPassword">Password</label>
-                        <input type="text" id="loginPassword"  placeholder="Enter your password" >
-                        
+                        <input type="password" id="loginPassword" placeholder="Enter your password">
+            
                         <div id="forgotPasswordDiv">
                             <a href="#" id="forgotPassword">Forgot password?</a>
                         </div>
                     </div>
-
-
-
+            
                     <input type="submit" id="loginBtn" class="submitBtn" value="Login">
-
                     <a href="#" id="createAccount">Create an account</a>
-
-
+            
                 </form>
-            </div>
-
-            <div id="formSignUpDiv" style="display: none;">
-                <form id="formSignUp" action="#">
-                    <p>Sign Up</p>
-                    <input type="text" id="signUpUsername" placeholder="Username" >
-                    <input type="text" id="signUpEmail" placeholder="Email" >
-                    <input type="text" id="signUpPassword" placeholder="Password" >
-                    <input type="submit" id="signUpBtn">
-
+            
+                <form action="#" id="formSettings" class="forms" style="display: none;" onsubmit="return validateSettingsForm();">
+            
+                    <div class="formH2Div">
+                        <h2>Hello <span id="usernameDisplay"></span></h2>
+                    </div>
+            
+                    <div id="cardsAmountDiv" class="labelInputDiv">
+                        <label for="cardsAmountSelect">Cards amount: </label>
+                        <select name="" id="cardsAmountSelect">
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <div id="timeLimitDiv" class="labelInputDiv">
+                        <label for="timeLimitSelect">Time limit: </label>
+                        <select name="" id="timeLimitSelect">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select>
+                    </div>
+                    <div id="learnEnglishToggleButtonDiv" class="labelInputDiv">
+                        <label for="learnEnglishToggleSwitch">Learn english mode: </label>
+                        <label class="switch">
+                            <input type="checkbox" id="learnEnglishToggleSwitch">
+                            <span class="toggle-switch-slider"></span>
+                        </label>
+                    </div>
+            
+                    <input type="submit" id="startGameBtn" class="submitBtn" value="Start game">
+                    <button id="scoreboardBtn">Scoreboard</button>
+                </form>
+            
+                <form action="#" id="formSignUp" class="forms" style="display: none;" onsubmit="return validateSignUpForm();">
+                    <div class="formH2Div">
+                        <h2>Sign Up</h2>
+                    </div>
+            
+                    <div class="labelInputDiv">
+                        <label for="signUpUsername">Username</label>
+                        <input type="text" id="signUpUsername" placeholder="Enter your username">
+                    </div>
+            
+                    <div class="labelInputDiv">
+                        <label for="signUpEmail">Email</label>
+                        <input type="email" id="signUpEmail" placeholder="Enter your email">
+                    </div>
+            
+                    <div class="labelInputDiv">
+                        <label for="signUpPassword">Password</label>
+                        <input type="password" id="signUpPassword" placeholder="Enter your password">
+                    </div>
+            
+                    <input type="submit" id="signUpBtn" class="submitBtn" value="Sign up">
                     <a href="#" id="backToLogin">Back to Login</a>
                 </form>
+            
+                <div id="scoreboardDiv" style="display: none;">
+                    <div id="scoreboardH2Div">
+                        <h2>Scoreboard</h2>
+                    </div>
+                    <div>
+                        <ul id="scoreboardList" type="none"></ul>
+                    </div>
+                    <div>
+                        <button id="scoreboardBackBtn">Back to menu</button>
+                    </div>
+                </div>
+            
             </div>
-
+            
         </div>
 
+
+        <div id="footerDiv">
+            
+        </div>
 
     </div>
     
     <script src="app.js"></script>
+    <script src="./appSettings.js"></script>
+    <script src="./eng-heb-dict.js"></script>
+    <script src="./formsValidation.js"></script>
 </body>
 </html>
