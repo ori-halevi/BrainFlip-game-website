@@ -1,3 +1,6 @@
+:root {
+    --forms-font-proportions: 0.5rem;
+}
 .forms {
     display: flex;
     flex-direction: column;
@@ -32,7 +35,7 @@
 
 .forms .formH2Div {
     text-align: left;
-    font-size: 1rem;
+    font-size: calc(var(--forms-font-proportions) * 1.5);
 }
 
 .forms .labelInputDiv {
@@ -41,7 +44,7 @@
     justify-content: center;
     align-items: left;
     text-align: left;
-    font-size: 1.1rem;
+    font-size: calc(var(--forms-font-proportions) * 1.2);
 }
 
 .forms input, .forms select {
@@ -49,6 +52,7 @@
     height: 35px;
     border-radius: 9px;
     border: 1px solid black;
+    font-size: calc(var(--forms-font-proportions) * 1.6);
 }
 
 
@@ -56,4 +60,12 @@
     background-color: #F7241D;
     color: white;
     border: none;
+    font-size: calc(var(--forms-font-proportions) * 2);
+}
+
+#forgotPassword {
+    font-size: calc(var(--forms-font-proportions) * 1.1);
+}
+#createAccount {
+    font-size: calc(var(--forms-font-proportions) * 2);
 }

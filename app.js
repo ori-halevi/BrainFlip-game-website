@@ -7,7 +7,8 @@ const formSettings = document.getElementById('formSettings');
 const signUpBtn = document.getElementById('signUpBtn');
 const loginBtn = document.getElementById('loginBtn');
 const allFormsDiv = document.getElementById('allFormsDiv');
-
+const welcomLogoDiv = document.getElementById('welcomLogoDiv');
+const logOutDiv = document.getElementById('log-out-div');
 
 let invalidLoginAlert = null;
 
@@ -19,26 +20,33 @@ let user = localStorage.getItem('user');
 window.onload = function() {
     allFormsDiv.style.display = 'none';  
     setTimeout(() => {
-        allFormsDiv.style.display = 'flex';
-
-        if (user) {
-            formLogin.style.display = 'none';
-            formSettings.style.display = 'flex';
-            updateUserNameDisplayOnForm();
-        } else {
-            formLogin.style.display = 'flex';
-            formSignUp.style.display = 'none';
-            formSettings.style.display = 'none';
-        }
-        document.getElementById('logoDiv').style.display = 'flex';
-        document.getElementById('welcomLogoDiv').style.display = 'none';
+        endWelcomeScreen();
         
     }, 3000);
 }
 
+function endWelcomeScreen() {
+    allFormsDiv.style.display = 'flex';
+
+    if (user) {
+        formLogin.style.display = 'none';
+        formSettings.style.display = 'flex';
+        updateUserNameDisplayOnForm();
+        logOutDiv.style.display = 'flex';
+    } else {
+        formLogin.style.display = 'flex';
+        formSignUp.style.display = 'none';
+        formSettings.style.display = 'none';
+    }
+    document.getElementById('logoDiv').style.display = 'flex';
+    welcomLogoDiv.style.display = 'none';
+
+}
 
 
-
+welcomLogoDiv.addEventListener('click', function() {
+    endWelcomeScreen();
+})
 
 
 
@@ -57,25 +65,9 @@ loginBtn.addEventListener('click', function(event) {
             formLogin.style.display = 'none';
             formSettings.style.display = 'flex';
             updateUserNameDisplayOnForm();
-
+            logOutDiv.style.display = 'flex';
         } else {
-            console.log(invalidLoginAlert);
-
-            console.log("Login failed.");
-            if (!invalidLoginAlert) {
-                invalidLoginAlert = document.createElement("p");
-                invalidLoginAlert.id = "invalidLoginAlert";
-                invalidLoginAlert.textContent = "Invalid login details. Please try again.";
-                invalidLoginAlert.style.color = "red";
-                console.log(invalidLoginAlert);
-                invalidLoginAlert.style.fontSize = "15px";
-                formLogin.appendChild(invalidLoginAlert);
-
-                setTimeout(() => {
-                    invalidLoginAlert.remove();
-                    invalidLoginAlert = null;
-                }, 3000);
-            }
+            alertUser("Invalid login details. Please try again.");
         }
     });
 });

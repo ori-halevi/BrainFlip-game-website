@@ -17,18 +17,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    height: 100vh;
     width: 100%;
+    min-height: 100vh;
     justify-content: space-between;
     background-image: url("./dep/mainPage1.png");
-    background-size: cover; /* מותח את התמונה לגודל ה-div */
+    background-size: 100%;
     background-position: top;
     background-repeat: no-repeat;
 }
 
 #headerDiv {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -36,15 +36,14 @@ body {
 
 #logoDiv {
     display: flex;
+    align-items: flex-start;
     justify-content: center;
     align-items: center;
-    margin: 20px 20px; 
+    margin: 0px 20px; 
     height: 100px;
+    width: 360px;
 }
-#logo {
-    font-size: 8rem;
-    margin: 0;
-}
+
 
 #bodyDiv {
     display: flex;
@@ -64,6 +63,8 @@ body {
 
 
 #logo {
+    font-size: 8rem;
+    margin: 0;
     display: flex;
     color: red; /* צבע האותיות */
     text-shadow: 
@@ -71,7 +72,6 @@ body {
          4px -4px 0 #000,
         -4px  4px 0 #000,
          4px  4px 0 #000; /* מסגרת מסביב לאותיות בצבע שחור */
-    color: red; /* כל האותיות בצבע אדום */
 }
 
 .insta-flipped {
@@ -296,6 +296,5 @@ input:checked + .toggle-switch-slider:before {
     /* position: absolute; */
     /* bottom: 0; */
     width: 100%;
-    height: 10vh;;
     
 }
