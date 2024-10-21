@@ -96,6 +96,7 @@ function updateUserNameDisplayOnGameSettingsForm() {
 
 
 
+
 // Not in use!!!
 // Load the all users to localStorage
 async function insertUsersToLocalStorage() {
