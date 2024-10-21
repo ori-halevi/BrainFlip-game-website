@@ -13,6 +13,10 @@ const createAccount = document.getElementById('createAccount');
 const backToLogin = document.getElementById('backToLogin');
 const logoDiv = document.getElementById('logoDiv')
 
+const selectsElements = document.querySelectorAll('select');
+const gameAudioMenuSelection = document.getElementById('gameAudioMenuSelection');
+
+
 window.onload = function() {
     // in case the user is logged in
     const user = localStorage.getItem('user');
@@ -189,3 +193,13 @@ async function CheckLoginDetails(username, password) {
         return null;
     }
 }
+
+
+
+
+selectsElements.forEach(select => {
+    select.addEventListener('change', () => {
+        gameAudioMenuSelection.currentTime = 0;
+        gameAudioMenuSelection.play();
+    });
+});

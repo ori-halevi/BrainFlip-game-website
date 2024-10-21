@@ -79,14 +79,12 @@ body {
 
 #movesLeftDiv {
     text-align: center;
-
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
     color: #2d00ff;
     width: 200px;
-    
     height: 70px;
     background-color: rgb(248, 235, 235);
     border-radius: 0px 0px 20px 20px;
@@ -100,15 +98,12 @@ body {
 
 #scoreDiv {
     text-align: center;
-
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
     color: #ff0000;
     width: 200px;
-    
-    
     height: 70px;
     background-color: rgb(248, 235, 235);
     border-radius: 0px 0px 20px 20px;
@@ -116,7 +111,7 @@ body {
     padding: 10px;
     padding-bottom: 0px;
     margin-top: -12px;
-    rotate: 5deg;
+    rotate: 4deg;
     left: 0;
 }
 

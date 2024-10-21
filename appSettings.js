@@ -12,6 +12,8 @@ const scoreboardBackBtn = document.getElementById("scoreboardBackBtn");
 const learnEnglishToggleSwitch = document.getElementById('learnEnglishToggleSwitch');
 
 
+const gameAudioTggleButtonOn = document.getElementById('gameAudioTggleButtonOn');
+const gameAudioTggleButtonOff = document.getElementById('gameAudioTggleButtonOff');
 
 
 
@@ -100,3 +102,14 @@ async function insertUsersToLocalStorage() {
     const users = await loadUsers();
     localStorage.setItem("users", JSON.stringify(users));
 }
+
+
+learnEnglishToggleSwitch.addEventListener('change', async function() {
+    if (this.checked) {
+        gameAudioTggleButtonOn.currentTime = 0;
+        gameAudioTggleButtonOn.play();
+    } else {
+        gameAudioTggleButtonOff.currentTime = 0;
+        gameAudioTggleButtonOff.play();
+    }
+});

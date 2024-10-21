@@ -16,8 +16,8 @@
 }
 
 .back {
-    background-color: #d895ad;
-    border: 1px solid #536d37;
+    background-color: #467aaa;
+    border: 1px solid #d895ad;
 }
 
 .cardBackSecondLayer {
@@ -25,6 +25,10 @@
     background-size: 110% 110%;
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid #536d37;
+    border: 1px solid #d895ad;
     border-radius: var(--card-border-radius);
+}
+
+.red-border {
+    border: 1px solid red;
 }

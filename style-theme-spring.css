@@ -28,3 +28,7 @@
     border: 1px solid #536d37;
     border-radius: var(--card-border-radius);
 }
+
+.red-border {
+    border: 1px solid red;
+}

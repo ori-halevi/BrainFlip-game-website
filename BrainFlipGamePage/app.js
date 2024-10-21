@@ -7,6 +7,7 @@ const cardsContainer = document.getElementById('cardsContainer');
 const gameAudio = document.getElementById('gameAudio');
 const gameAudioMatch = document.getElementById('gameAudioMatch');
 const gameAudioBonus = document.getElementById('gameAudioBonus');
+const gameAudioWrong = document.getElementById('gameAudioWrong');
 
 
 
@@ -41,7 +42,6 @@ window.onload = () => {
 
 
 
-
 function createCard(cardID, cardCoupleName, engHebWordsKeyValue = null) {
     
     let card = document.createElement('div');
@@ -58,6 +58,7 @@ function createCard(cardID, cardCoupleName, engHebWordsKeyValue = null) {
     let cardBackSecondLayer = document.createElement('div');
     cardBackSecondLayer.classList.add('cardBackSecondLayer');
     cardBack.appendChild(cardBackSecondLayer);
+
 
     let cardFront = document.createElement('div');
     cardFront.classList.add('card', 'front');
@@ -177,7 +178,7 @@ function onUserClickCard(card) {
         // red color diabled cards
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
-            card.style.border = "2px solid red";
+            card.classList.add('red-border');
         });
 
         flipCard(card);
@@ -225,10 +226,12 @@ function handleSecondCardClick() {
 
         // white color diabled cards
         cards.forEach(card => {
-            card.style.border = "2px solid transparent";
+            card.classList.remove('red-border');
         });
 
     } else {
+        gameAudioWrong.currentTime = 0;
+        gameAudioWrong.play();
         setTimeout(() => {
 
             hideCardByDataId(previousCardInfo[1]);
@@ -239,7 +242,7 @@ function handleSecondCardClick() {
 
             // white color diabled cards
             cards.forEach(card => {
-                card.style.border = "2px solid transparent";
+                card.classList.remove('red-border');
             });
 
         } , 1000);
