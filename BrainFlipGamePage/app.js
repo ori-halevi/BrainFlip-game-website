@@ -1,10 +1,14 @@
 
+const themeStylesheetLink = document.getElementById('CSSTheme');
+
 const cardsAmount = localStorage.getItem('cardsAmount');
 const cardsContainer = document.getElementById('cardsContainer');
 
 const gameAudio = document.getElementById('gameAudio');
 const gameAudioMatch = document.getElementById('gameAudioMatch');
 const gameAudioBonus = document.getElementById('gameAudioBonus');
+
+
 
 let userMidTurn = false;
 
@@ -25,6 +29,7 @@ let waitForAnimation = false;
 
 
 window.onload = () => {
+    loadTheme();
     gameAudio.play();
     gameAudio.volume = 0.4;
     MainSpreadCards();
@@ -50,11 +55,15 @@ function createCard(cardID, cardCoupleName, engHebWordsKeyValue = null) {
     let cardBack = document.createElement('div');
     cardBack.classList.add('card', 'back');
     card.appendChild(cardBack);
+    let cardBackSecondLayer = document.createElement('div');
+    cardBackSecondLayer.classList.add('cardBackSecondLayer');
+    cardBack.appendChild(cardBackSecondLayer);
 
     let cardFront = document.createElement('div');
     cardFront.classList.add('card', 'front');
     let cardFrontImg = document.createElement('img');
-    cardFrontImg.src = `../dep/AutumnTheme/cardsFronts/${cardCoupleName}.png`;
+    const theme = localStorage.getItem('theme');
+    cardFrontImg.src = `../dep/${theme}-Theme/cardsFronts/${cardCoupleName}.png`;
 
     cardFrontImg.classList.add('cardImg');
     cardFront.appendChild(cardFrontImg);
@@ -65,7 +74,7 @@ function createCard(cardID, cardCoupleName, engHebWordsKeyValue = null) {
     if (localStorage.getItem('learnEnglish') === 'true') {
         const wordsDiv = document.createElement('div');
         wordsDiv.classList.add('words-div');
-        cardBack.appendChild(wordsDiv);
+        cardBackSecondLayer.appendChild(wordsDiv);
 
         if (card.dataset.id % 2 === 0) {
             let cardBackText = document.createTextNode(`${engHebWordsKeyValue.key}` );
@@ -99,7 +108,7 @@ function MainSpreadCards() {
     
     for (let count = 0; count < cardsAmount; count++) {
         // get random word in english and hebrew     
-        const engHebWordsKeyValue = getRandomKeyAndRemoveFromStorage('dictionary');
+        const engHebWordsKeyValue = getRandomKeyAndRemoveFromStorage();
         
      // create first card
         let firstCard = createCard(i, j, engHebWordsKeyValue);
@@ -154,7 +163,6 @@ function onUserClickCard(card) {
         startGameTimer();
     }
 
-    console.log("current turn:", numberOfTurns);
 
     if (!userMidTurn) {
         // First card was clicked
@@ -181,7 +189,6 @@ function onUserClickCard(card) {
         updateMovesLeftDisplay();
     }
 
-    console.log("matchs", matchs);
     
     
     // Check if the game is won
@@ -191,7 +198,6 @@ function onUserClickCard(card) {
     }
     // Check if the game is over
     if (numberOfTurns < 1) {
-        console.log("Game Over");
         handleGameLost();
         return;
     }
@@ -209,12 +215,11 @@ function handleSecondCardClick() {
     const cards = document.querySelectorAll('.card');
 
     if (previousCardInfo[0] === currentCardInfo[0]) {
-        console.log("match");
         score += 21 - (timeLimit / 60) + (cardsAmount - 10);
         updateScoreDisplay();
         matchs++;
+        gameAudioMatch.currentTime = 0;
         gameAudioMatch.play();
-        console.log(matchs);
         
         waitForAnimation = false;
 
@@ -224,7 +229,6 @@ function handleSecondCardClick() {
         });
 
     } else {
-        console.log("no match");
         setTimeout(() => {
 
             hideCardByDataId(previousCardInfo[1]);
@@ -244,5 +248,10 @@ function handleSecondCardClick() {
 
 
 
-
+function loadTheme() {
+    const themeStylesheetLink = document.getElementById('CSSTheme');
+    
+    const theme = localStorage.getItem('theme');
+    themeStylesheetLink.setAttribute("href", "../style-theme-" + theme + ".css");
+}
 

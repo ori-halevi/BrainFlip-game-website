@@ -37,6 +37,9 @@
     text-align: left;
     font-size: calc(var(--forms-font-proportions) * 1.5);
 }
+.forms .formH2Div h2 {
+    margin: 10px 0;
+}
 
 .forms .labelInputDiv {
     display: flex;

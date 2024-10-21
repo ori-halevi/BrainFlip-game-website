@@ -6,9 +6,8 @@ const timeLimit = document.getElementById("timeLimitSelect");
 const scoreboardDiv = document.getElementById("scoreboardDiv");
 
 const startGameBtn = document.getElementById("startGameBtn");
-const scoreboardBtn = document.getElementById("scoreboardBtn");
+const showScoreboardBtn = document.getElementById("showScoreboardBtn");
 const scoreboardBackBtn = document.getElementById("scoreboardBackBtn");
-
 
 const learnEnglishToggleSwitch = document.getElementById('learnEnglishToggleSwitch');
 
@@ -17,29 +16,21 @@ const learnEnglishToggleSwitch = document.getElementById('learnEnglishToggleSwit
 
 
 
-function updateUserNameDisplayOnForm() {
-    const userData = localStorage.getItem('user');
-    const currentUser = userData ? JSON.parse(userData) : { username: 'Guest' };
-    document.getElementById('usernameDisplay').textContent = currentUser.username;
-}
-
-
 
 // Show the scoreboard when the scoreboard button is clicked
-scoreboardBtn.addEventListener("click", function(event) {
+showScoreboardBtn.addEventListener("click", function(event) {
     event.preventDefault();
     formSettings.style.display = "none";
     scoreboardDiv.style.display = "flex";
-    loadTopTen();
-    
+    loadTopTen(); 
 });
+
 // Go back to the settings page when the back button is clicked
 scoreboardBackBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    formSettings.style.display = "flex";
     scoreboardDiv.style.display = "none";
+    formSettings.style.display = "flex";
 });
-
 
 // Start the game when the start button is clicked
 startGameBtn.addEventListener("click", async function (event) {
@@ -53,6 +44,27 @@ startGameBtn.addEventListener("click", async function (event) {
 
 
 
+
+
+
+
+
+
+
+
+async function loadTopTen() {
+    const users = await loadUsers();
+    const topTenUsers = users.sort((a, b) => b["highest-score"] - a["highest-score"]).slice(0, 10);
+
+    // Display the names and scores of the ten users with the highest scores
+    document.getElementById("scoreboardList").innerHTML = ''; // Clear the previous list of users
+    topTenUsers.forEach(user => {
+        const li = document.createElement("li");
+        li.textContent = `${user["highest-score"]}⭐: ${user.username}`;
+        document.getElementById("scoreboardList").appendChild(li);
+    });
+}
+
 async function loadUsers() {
     try {
         const response = await fetch('./usersDB.json');
@@ -64,31 +76,27 @@ async function loadUsers() {
     }
 }
 
-// Not in use
-async function insertUsersToLocalStorage() {
-    const users = await loadUsers();
-    localStorage.setItem("users", JSON.stringify(users));
-}
-
 async function updateLocalStorage() {
     localStorage.setItem("cardsAmount", cardsAmount.value);
     localStorage.setItem("timeLimit", timeLimit.value);
     localStorage.setItem("learnEnglish", learnEnglishToggleSwitch.checked);
     if (localStorage.getItem("learnEnglish") === "true") {
-        await loadEngHebDictToLocalStotrage();
+        await loadLearnEnglishDictionaryToLocalStotrage();
     }
 };
 
 
-async function loadTopTen() {
-    const users = await loadUsers();
-    const topTenUsers = users.sort((a, b) => b["highest-score"] - a["highest-score"]).slice(0, 10);
+function updateUserNameDisplayOnGameSettingsForm() {
+    const userData = localStorage.getItem('user');
+    const currentUser = userData ? JSON.parse(userData) : { username: 'Guest' };
+    document.getElementById('usernameDisplay').textContent = currentUser.username;
+}
 
-    // Display the names and scores of the ten users with the highest scores
-    document.getElementById("scoreboardList").innerHTML = '';
-    topTenUsers.forEach(user => {
-        const li = document.createElement("li");
-        li.textContent = `${user["highest-score"]}⭐: ${user.username}`;
-        document.getElementById("scoreboardList").appendChild(li);
-    });
+
+
+// Not in use!!!
+// Load the all users to localStorage
+async function insertUsersToLocalStorage() {
+    const users = await loadUsers();
+    localStorage.setItem("users", JSON.stringify(users));
 }

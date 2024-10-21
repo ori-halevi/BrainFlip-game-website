@@ -27,7 +27,7 @@ body {
 
 #headerDiv {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
@@ -185,6 +185,15 @@ body {
 .back {
   font-size: 3rem;
   color: white;
+}
+
+.cardBackSecondLayer {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
 }
 
 .flip {

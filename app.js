@@ -9,46 +9,34 @@ const loginBtn = document.getElementById('loginBtn');
 const allFormsDiv = document.getElementById('allFormsDiv');
 const welcomLogoDiv = document.getElementById('welcomLogoDiv');
 const logOutDiv = document.getElementById('log-out-div');
-
-let invalidLoginAlert = null;
-
-// in case the user is logged in
-let user = localStorage.getItem('user');
-
+const createAccount = document.getElementById('createAccount');
+const backToLogin = document.getElementById('backToLogin');
+const logoDiv = document.getElementById('logoDiv')
 
 
 window.onload = function() {
-    allFormsDiv.style.display = 'none';  
+    showLogoBigScreen();
     setTimeout(() => {
-        endWelcomeScreen();
-        
+        showHomePageScreen();
     }, 3000);
 }
 
-function endWelcomeScreen() {
-    allFormsDiv.style.display = 'flex';
-
-    if (user) {
-        formLogin.style.display = 'none';
-        formSettings.style.display = 'flex';
-        updateUserNameDisplayOnForm();
-        logOutDiv.style.display = 'flex';
-    } else {
-        formLogin.style.display = 'flex';
-        formSignUp.style.display = 'none';
-        formSettings.style.display = 'none';
-    }
-    document.getElementById('logoDiv').style.display = 'flex';
-    welcomLogoDiv.style.display = 'none';
-
-}
 
 
-welcomLogoDiv.addEventListener('click', function() {
-    endWelcomeScreen();
+logoDiv.addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.reload();
 })
 
+logOutDiv.addEventListener('click', () => {
+    localStorage.clear();
+    window.location.reload();
+})
 
+welcomLogoDiv.addEventListener('click', function(event) {
+    event.preventDefault();
+    showHomePageScreen();
+})
 
 // Login form logic
 loginBtn.addEventListener('click', function(event) {
@@ -58,43 +46,36 @@ loginBtn.addEventListener('click', function(event) {
     const password = document.getElementById('loginPassword').value;
     CheckLoginDetails(username, password).then(exists => {
         if (exists) {
-            console.log("Login successful.");
             const userInfo = exists;
+            console.log("Login successful.");
             // Save user info in local storage
             localStorage.setItem('user', JSON.stringify(userInfo));
-            formLogin.style.display = 'none';
-            formSettings.style.display = 'flex';
-            updateUserNameDisplayOnForm();
-            logOutDiv.style.display = 'flex';
+            showHomePageScreen();
         } else {
             alertUser("Invalid login details. Please try again.");
         }
     });
 });
 
-
 // Display sign up form
-document.getElementById('createAccount').addEventListener('click', function(event) {
+createAccount.addEventListener('click', function(event) {
     event.preventDefault(); // למנוע מעבר על הקישור
     formLogin.style.display = 'none'; // להסתיר את טופס ההתחברות
     formSignUp.style.display = 'flex'; // להציג את טופס ההרשמה
 });
 
-
-
 // Display login form again
-document.getElementById('backToLogin').addEventListener('click', function(event) {
+backToLogin.addEventListener('click', function(event) {
     event.preventDefault(); // למנוע מעבר על הקישור
     formSignUp.style.display = 'none'; // להסתיר את טופס ההרשמה
     formLogin.style.display = 'flex'; // להציג את טופס ההתחברות
+    document.documentElement.style.setProperty('--forms-font-proportions', '0.5rem');
 });
-
-
 
 // Sign up form logic
 signUpBtn.addEventListener('click', function(event) {
-    if (!validateSignUpForm()) return;
     event.preventDefault();
+    if (!validateSignUpForm()) return;
     const username = document.getElementById('signUpUsername').value;
     const password = document.getElementById('signUpPassword').value;
     const email = document.getElementById('signUpEmail').value;
@@ -125,6 +106,66 @@ signUpBtn.addEventListener('click', function(event) {
 
 
 
+
+
+
+
+
+function showHomePageScreen() {
+    // in case the user is logged in
+    const user = localStorage.getItem('user');
+    
+    allFormsDiv.style.display = 'flex';
+
+    logoDiv.style.display = 'flex';
+    welcomLogoDiv.style.display = 'none';
+    if (user) {
+        showGameSettingsForm();
+    } else {
+        showLoginForm();
+    }
+}
+
+
+function showLogoBigScreen() {
+    allFormsDiv.style.display = 'none';
+    welcomLogoDiv.style.display = 'flex';
+}
+
+
+function showGameSettingsForm() {
+    formLogin.style.display = 'none';
+    formSettings.style.display = 'flex';
+    document.documentElement.style.setProperty('--forms-font-proportions', '0.7rem');
+    updateUserNameDisplayOnGameSettingsForm();
+    logOutDiv.style.display = 'flex';
+}
+
+
+function showLoginForm() {
+    formLogin.style.display = 'flex';
+    document.documentElement.style.setProperty('--forms-font-proportions', '0.5rem');
+    formSignUp.style.display = 'none';
+    formSettings.style.display = 'none';
+}
+
+
+
+
+function alertUser(message) {
+    notification.textContent = message;
+
+    notification.style.display = 'block';
+
+    // waits 3 seconds and then hides the message
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 5000);
+}
+
+
+
+
 async function CheckLoginDetails(username, password) {
     try {
         const response = await fetch('./usersDB.json');
@@ -139,17 +180,4 @@ async function CheckLoginDetails(username, password) {
         console.error('Error checking login details:', error);
         return null;
     }
-}
-
-
-
-function alertUser(message) {
-    notification.textContent = message;
-
-    notification.style.display = 'block';
-
-    // waits 3 seconds and then hides the message
-    setTimeout(() => {
-        notification.style.display = 'none';
-    }, 5000);
 }

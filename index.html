@@ -5,21 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrainFlip</title>
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./FontsStyle.css" />
-    <link rel="stylesheet" href="./FormsStyle.css" />
-    <!-- <script src="exercise1.js"></script> -->
+    <link rel="stylesheet" href="./styleFonts.css" />
+    <link rel="stylesheet" href="./styleForms.css" />
+    <link rel="stylesheet" id="CSSTheme" href="" />
 </head>
 <body>
+    
+    <div class="background-image">
+
+    </div>
+
     <div id="mainContainerDiv">
 
         <div id="headerDiv">
             <div id="logoDiv" style="display: none;">
-                <h1 id="logo" class="logo-font">
+                <h1 id="logo" class="logo-font" title="Reload page">
                     Brain<span class="insta-flipped">pilF</span>
                 </h1>
             </div>
 
-            <div id="log-out-div" class="log-out-div" style="display: none;"></div>
+            <div id="seasonImagesContainer" class="season-images-container image-container">
+                <img src="./dep/Autumn.png" alt="Autumn" class="season-image" data-theme="autumn">
+                <img src="./dep/Winter.png" alt="Winter" class="season-image" data-theme="winter">
+                <img src="./dep/Spring.png" alt="Spring" class="season-image" data-theme="spring">
+                <img src="./dep/Summer.png" alt="Summer" class="season-image" data-theme="summer">
+            </div>
+            
+
+            <div id="log-out-div" class="log-out-div" title="Log out" style="display: none;">
+
+                <img src="./dep/logout.png" alt="Image" class="logoutImage">
+            </div>
         </div>
         
         
@@ -30,7 +46,7 @@
 
         <div id="bodyDiv">
 
-            <div id="welcomLogoDiv" style="cursor: pointer;">
+            <div id="welcomLogoDiv" style="cursor: pointer;" title="Press to skip">
                 <h1 id="logo" class="logo-font">
                     <span style="color: white;">Welcome to&nbsp;</span>
                     <span>Brain</span>
@@ -64,6 +80,7 @@
                     </div>
             
                     <input type="submit" id="loginBtn" class="submitBtn" value="Login">
+
                     <a href="#" id="createAccount">Create an account</a>
             
                 </form>
@@ -99,7 +116,8 @@
                     </div>
             
                     <input type="submit" id="startGameBtn" class="submitBtn" value="Start game">
-                    <button id="scoreboardBtn">Scoreboard</button>
+
+                    <button id="showScoreboardBtn">Scoreboard</button>
                 </form>
             
                 <form action="#" id="formSignUp" class="forms" style="display: none;" onsubmit="return validateSignUpForm();">
@@ -151,7 +169,8 @@
     
     <script src="app.js"></script>
     <script src="./appSettings.js"></script>
-    <script src="./eng-heb-dict.js"></script>
-    <script src="./formsValidation.js"></script>
+    <script src="./appLearnEnglishDictionary.js"></script>
+    <script src="./appFormsValidation.js"></script>
+    <script src="./appTheme.js"></script>
 </body>
 </html>

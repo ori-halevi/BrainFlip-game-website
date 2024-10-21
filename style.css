@@ -1,5 +1,6 @@
 :root {
-    --footer-color:  rgb(115, 235, 115);
+    --button-color:  #73eb73;
+    --hover-button-color: #2e5e2e;
 }
 
 body {
@@ -20,10 +21,6 @@ body {
     width: 100%;
     min-height: 100vh;
     justify-content: space-between;
-    background-image: url("./dep/mainPage1.png");
-    background-size: 100%;
-    background-position: top;
-    background-repeat: no-repeat;
 }
 
 #headerDiv {
@@ -42,7 +39,109 @@ body {
     margin: 0px 20px; 
     height: 100px;
     width: 360px;
+    cursor: pointer;
 }
+
+
+
+@keyframes rotate-clockwise-and-fade3 {
+    0% {
+      transform: rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+@keyframes rotate-clockwise-and-fade {
+    0% {
+      transform: rotate(0deg);
+      opacity: 0;
+    }
+    100% {
+      transform: rotate(360deg);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes shadow-transition {
+    0% {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 1);
+    }
+    50% {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    }
+    100% {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 1);
+    }
+  }
+
+  .season-images-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 70px;
+    height: 70px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 100%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 1);
+    margin: 20px;
+    overflow: visible;
+  }
+
+
+  .season-image {
+    width: 110%;
+    height: 110%;
+    position: absolute;
+    transition: opacity 1.5s;
+    object-fit: cover;
+    
+  }
+  .season-images-container.animating {
+    animation: shadow-transition 1.5s forwards;
+  }
+  .season-image:not(.active) {
+    animation: rotate-clockwise-and-fade3 1.5s forwards;
+  }
+  .season-image.active {
+    animation: rotate-clockwise-and-fade 1.5s forwards;
+  }
+  
+
+
+
+
+.log-out-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    height: 50px;
+    width: 50px;
+}
+
+.logoutImage {
+    width: 100%; /* או גובה מוגדר */
+    transition: transform 0.3s, box-shadow 0.3s; /* אנימציה לרצף השינוי */
+    cursor: pointer;
+}
+
+.log-out-div:hover .logoutImage {
+    transform: scale(1.1); /* להגדיל את התמונה מעט */
+}
+
+
+
+
+
+
+
 
 
 #bodyDiv {
@@ -158,14 +257,25 @@ body {
     align-items: center;
     font-size: 1.5rem;
     border-radius: 10px;
-    background-color: rgb(115, 235, 115);
+    background-color: var(--button-color);
     color: white;
+    border: 2px solid black;
     height: 40px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    scale: 1.02;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+#startGameBtn:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background-color: rgb(85, 190, 85);
+    transform: scale(1.05);
 }
 
 
 
-#scoreboardBtn {
+#showScoreboardBtn {
     display: flex;
     justify-content: center;
     align-items: center;
