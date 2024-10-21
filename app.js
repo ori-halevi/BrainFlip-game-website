@@ -13,12 +13,17 @@ const createAccount = document.getElementById('createAccount');
 const backToLogin = document.getElementById('backToLogin');
 const logoDiv = document.getElementById('logoDiv')
 
-
 window.onload = function() {
-    showLogoBigScreen();
-    setTimeout(() => {
-        showHomePageScreen();
-    }, 3000);
+    // in case the user is logged in
+    const user = localStorage.getItem('user');
+    if (user) {
+        showHomePageScreen()
+    } else {
+        showLogoBigScreen();
+        setTimeout(() => {
+            showHomePageScreen();
+        }, 3000);
+    }
 }
 
 
@@ -115,10 +120,11 @@ function showHomePageScreen() {
     // in case the user is logged in
     const user = localStorage.getItem('user');
     
-    allFormsDiv.style.display = 'flex';
-
-    logoDiv.style.display = 'flex';
     welcomLogoDiv.style.display = 'none';
+    
+    allFormsDiv.style.display = 'flex';
+    logoDiv.style.display = 'flex';
+    seasonImagesContainer.style.display = 'flex';
     if (user) {
         showGameSettingsForm();
     } else {
@@ -129,6 +135,8 @@ function showHomePageScreen() {
 
 function showLogoBigScreen() {
     allFormsDiv.style.display = 'none';
+    seasonImagesContainer.style.display = 'none';
+    logoDiv.style.display = 'none';
     welcomLogoDiv.style.display = 'flex';
 }
 

@@ -16,15 +16,15 @@
 }
 
 .back {
-    background-color: #623b4d;
-    border: 1px solid #9c7c4a;
+    background-color: #d895ad;
+    border: 1px solid #536d37;
 }
 
 .cardBackSecondLayer {
-    background-image: url("./dep/spring-Theme/cardBack.jpeg");
+    background-image: url("./dep/spring-Theme/cardBack.jpg");
     background-size: 110% 110%;
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid #9c7c4a;
+    border: 1px solid #536d37;
     border-radius: var(--card-border-radius);
 }

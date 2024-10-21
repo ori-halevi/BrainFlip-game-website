@@ -3,7 +3,7 @@ const themeStylesheetLink = document.getElementById('CSSTheme');
 const seasonImages = document.querySelectorAll('.season-image');
 
 // Set initial theme
-const initialTheme = localStorage.getItem('theme') || 'autumn';
+const initialTheme = localStorage.getItem('theme') || 'spring';
 
 let currentIndex = 0;
 
