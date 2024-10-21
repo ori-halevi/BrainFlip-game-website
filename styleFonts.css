@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'IstokWeb';
-    src: url('/fonts/IstokWeb-Regular.ttf') format('truetype');
+    src: url('./dep/fonts/IstokWeb-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Jomhuria';
-    src: url('/fonts/Jomhuria-Regular.ttf') format('truetype');
+    src: url('./dep/fonts/Jomhuria-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
