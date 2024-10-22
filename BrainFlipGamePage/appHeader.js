@@ -2,15 +2,26 @@ const movesLeftDiv = document.getElementById('movesLeftDiv');
 const scoreDiv = document.getElementById('scoreDiv');
 const pauseDiv = document.getElementById('pauseDiv');
 
+const scoreH1 = document.createElement('scoreH1');
+const scoreP = document.createElement('scoreP');
+
+const movesLeftH1 = document.createElement('movesLeftH1');
+const movesLeftP = document.createElement('movesLeftP');
 
 let numberOfTurns = difficultyLevel * cardsAmount;
 
 function updateMovesLeftDisplay() {
-    movesLeftDiv.innerHTML = `Remaining moves:<br>${numberOfTurns}`;
+    movesLeftH1.textContent = `Moves:`;
+    movesLeftDiv.appendChild(movesLeftH1);
+    movesLeftP.textContent = `${numberOfTurns}`;
+    movesLeftDiv.appendChild(movesLeftP);
 }
 
 function updateScoreDisplay() {
-    scoreDiv.innerHTML = `Your score so far:<br>${score} ⭐`;
+    scoreH1.textContent = `Score:`;
+    scoreDiv.appendChild(scoreH1);
+    scoreP.textContent = `${score} ⭐`;
+    scoreDiv.appendChild(scoreP);
 }
 
 pauseDiv.addEventListener('click', () => {

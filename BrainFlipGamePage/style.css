@@ -4,12 +4,13 @@
     --background-color: rgb(255, 246, 204);
 
     --card-border-radius: 12px;
-    --card-width: calc(50px * 2.5);
-    --card-height: calc(85px * 2.5);
+    --card-width: calc(50px * 2.8);
+    --card-height: calc(85px * 2.8);
 }
 
 body {
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 /* div {
@@ -20,22 +21,48 @@ body {
 
 #mainContainerDiv {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     align-items: stretch;
     min-height: 99vh;
 }
 
+
+
 #headerDiv {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    position: sticky;
-    top: 0;
-    width: 100%;
+    position: fixed;
+    padding: 15px;
+    left: 1%;
+    top: 5%;
     background-color: var(--footer-color);
     z-index: 1;
+    gap: 20px;
     
 }
+
+#pauseDiv, #timerDiv, #movesLeftDiv, #scoreDiv {
+    margin: 5px;
+}
+#timerDiv, #movesLeftDiv, #scoreDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    position: relative;
+
+    font-size: 1rem;
+    border: 2px solid black;
+    background-color: rgb(248, 235, 235);
+    border-radius: 20px;
+    width: 80px;
+    height: 80px;
+}
+
+
 
 
 #pauseDiv {
@@ -54,68 +81,6 @@ body {
     background-image: url("../dep/pauseBtnHover.png");
     background-size: 120% 120%; 
 }
-
-
-#timerDiv {
-    text-align: center;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    color: green;
-    width: 200px;
-    
-    height: 70px;
-    background-color: rgb(248, 235, 235);
-    border-radius: 0px 0px 20px 20px;
-    border: 2px solid black;
-    padding: 10px;
-    padding-bottom: 0px;
-    margin-top: -12px;
-    rotate: 5deg;
-    left: 0;
-}
-
-#movesLeftDiv {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    color: #2d00ff;
-    width: 200px;
-    height: 70px;
-    background-color: rgb(248, 235, 235);
-    border-radius: 0px 0px 20px 20px;
-    border: 2px solid black;
-    padding: 10px;
-    padding-bottom: 0px;
-    margin-top: -12px;
-    rotate: -4deg;
-    left: 0;
-}
-
-#scoreDiv {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    color: #ff0000;
-    width: 200px;
-    height: 70px;
-    background-color: rgb(248, 235, 235);
-    border-radius: 0px 0px 20px 20px;
-    border: 2px solid black;
-    padding: 10px;
-    padding-bottom: 0px;
-    margin-top: -12px;
-    rotate: 4deg;
-    left: 0;
-}
-
-
 
 
 

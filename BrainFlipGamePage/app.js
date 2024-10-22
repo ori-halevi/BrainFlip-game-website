@@ -37,7 +37,14 @@ window.onload = () => {
     updateMovesLeftDisplay();
     updateScoreDisplay();
     displayTimer();
-}
+
+    // setTimeout(function() {
+    //     window.scrollBy({ top: 100, behavior: 'smooth' }); // גולל את העמוד 20 פיקסלים למטה
+    // }, 500); // 500 מילישניות
+    // setTimeout(function() {
+    //     window.scrollBy({ top: -100, behavior: 'smooth' }); // גולל את העמוד 20 פיקסלים למטה
+    // }, 1000); // 500 מילישניות
+};
 
 
 

@@ -3,6 +3,9 @@ let secondsElapsed = 0;
 const timeLimit = localStorage.getItem('timeLimit') * 60;
 const timerDiv = document.getElementById('timerDiv');
 
+const timerH1 = document.createElement('timerH1');
+const timerP = document.createElement('timerP');
+
 /**
  * Starts the game timer when the game page is loaded.
  */
@@ -26,7 +29,10 @@ function displayTimer() {
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
 
-    timerDiv.innerHTML = `Time Remaining:&nbsp;<br>${minutes}m ${seconds}s`;
+    timerH1.textContent = "time:"
+    timerDiv.appendChild(timerH1);
+    timerP.textContent = `${minutes}m ${seconds}s`;
+    timerDiv.appendChild(timerP);
 }
 
 /**
