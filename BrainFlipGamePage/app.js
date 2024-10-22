@@ -175,12 +175,6 @@ function onUserClickCard(card) {
         waitForAnimation = true;
         currentCardInfo = [card.dataset.couple, card.dataset.id];
 
-        // red color diabled cards
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            card.classList.add('red-border');
-        });
-
         flipCard(card);
 
         handleSecondCardClick();  
@@ -224,27 +218,25 @@ function handleSecondCardClick() {
         
         waitForAnimation = false;
 
-        // white color diabled cards
-        cards.forEach(card => {
-            card.classList.remove('red-border');
-        });
-
     } else {
-        gameAudioWrong.currentTime = 0;
-        gameAudioWrong.play();
         setTimeout(() => {
+            gameAudioWrong.currentTime = 0;
+            gameAudioWrong.play();
+            // red color border for all cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.classList.add('red-border');
+            });
+        }, 300);
 
+        setTimeout(() => {
             hideCardByDataId(previousCardInfo[1]);
             hideCardByDataId(currentCardInfo[1]);
-            
-                waitForAnimation = false;
-
-
+            waitForAnimation = false;
             // white color diabled cards
             cards.forEach(card => {
                 card.classList.remove('red-border');
             });
-
         } , 1000);
         }
 }

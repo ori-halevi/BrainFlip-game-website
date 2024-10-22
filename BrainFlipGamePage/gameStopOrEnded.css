@@ -1,73 +1,108 @@
 
 
 .dark-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.game-over-window {
+
+
+.popup-screen {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    background-color: black;
-    color: white;
-    width: 40%;
-    height: 80%;
-    font-size: 2rem;
-    border-radius: 20px;
-    padding: 20px;
-    
-}
-
-.nav-btns-div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    padding: 20px;
-}
-
-.play-again-btn, .continue-game-btn {
-    background-color: green;
-    color: white;
-    font-size: 1.5rem;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.back-to-menu-btn, .end-game-btn {
-    background-color: red;
-    color: white;
-    font-size: 1.5rem;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-
-
-
-
-.game-pause-window {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-    background-color: yellowgreen;
-    color: white;
-    width: 40%;
-    height: 80%;
     font-size: 2rem;
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 2px solid black;
 }
+
+
+.titles-div {
+    text-align: center;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+.titles-div h1, .titles-div h2 {
+    margin: 3px 0;
+
+}
+
+
+
+.popup-args-div {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0px;
+    margin: 10px 0;
+}
+
+.popup-args-p {
+    font-size: 1.2rem;
+    margin: 3px 0;
+    color: white;
+    /* -webkit-text-stroke: 0.5px black; */
+    text-shadow: 0 0 5px black;
+}
+
+
+
+.nav-btns-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 0px;
+    margin: 10px 0;
+}
+
+.play-again-btn, .continue-game-btn, .back-to-menu-btn {
+    font-size: 1rem;
+    padding: 10px;
+    margin: 3px 9px;
+    border-radius: 10px;
+}
+
+
+
+
+.popupScreenDiv-red {
+    background-color: #d85454;
+}
+
+.playAgainBtn-red, .continueGameBtn-red, .backToMenuBtn-red {
+    background-color: #eba9a9;
+}
+
+
+.popupScreenDiv-green {
+    background-color: #94d05d;
+}
+
+.playAgainBtn-green, .continueGameBtn-green, .backToMenuBtn-green {
+    background-color: #cae8ae;
+}
+
+
+.popupScreenDiv-yellow {
+    background-color: #ffd43b;
+}
+
+.playAgainBtn-yellow, .continueGameBtn-yellow, .backToMenuBtn-yellow {
+    background-color: #ffeeb1;
+}
+
+

@@ -26,7 +26,7 @@ function displayTimer() {
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
 
-    timerDiv.innerHTML = `Time Remaining:<br>${minutes}m ${seconds}s`;
+    timerDiv.innerHTML = `Time Remaining:&nbsp;<br>${minutes}m ${seconds}s`;
 }
 
 /**

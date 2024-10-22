@@ -14,7 +14,7 @@ function updateScoreDisplay() {
 }
 
 pauseDiv.addEventListener('click', () => {
-    createGamePauseScreen();
+    createScreenOnTheGame("yellow", "Game paused", "Need to pee, do we?", false, "Your score so far: " + score + " ⭐", "Remaining moves: " + numberOfTurns, timerDiv.textContent);
     pauseGameTimer();
     gameAudio.pause();
 })
@@ -25,52 +25,87 @@ pauseDiv.addEventListener('click', () => {
 
 
 
+function createScreenOnTheGame(bgColor, title, subTitle, isPlayAgainBtn, ...args) {
+
+
+    const darkScreenDiv = document.createElement('div');
+    darkScreenDiv.classList.add('dark-screen');
+    document.body.appendChild(darkScreenDiv);
+
+    const popupScreenDiv = document.createElement('div');
+    popupScreenDiv.classList.add('popup-screen');
+    popupScreenDiv.classList.add("popupScreenDiv-" + bgColor);
+    darkScreenDiv.appendChild(popupScreenDiv);
+
+
+    const TitlesDiv = document.createElement('div');
+    TitlesDiv.classList.add('titles-div');
+    popupScreenDiv.appendChild(TitlesDiv);
+
+    const titleH1 = document.createElement('h1');
+    titleH1.textContent = title;
+    TitlesDiv.appendChild(titleH1);
+
+    const subTitleH2 = document.createElement('h2');    
+    subTitleH2.textContent = subTitle;
+    TitlesDiv.appendChild(subTitleH2);
 
 
 
+    if (args.length > 0) {
 
+        const popupArgsDiv = document.createElement('div');
+        popupArgsDiv.classList.add('popup-args-div');
+        popupScreenDiv.appendChild(popupArgsDiv);
 
-function createGamePauseScreen() {
-    const darkScreen = document.createElement('div');
-    darkScreen.classList.add('dark-screen');
-    document.body.appendChild(darkScreen);
-
-    const gameOverWindow = document.createElement('div');
-    gameOverWindow.classList.add('game-pause-window');
-    darkScreen.appendChild(gameOverWindow);
-
-    const title = document.createElement('h1');
-    title.textContent = "Game Paused";
-    gameOverWindow.appendChild(title);
-
-    const scoreText = document.createElement('p');
-    scoreText.textContent = `Your score so far: ${score} ⭐`;
-    gameOverWindow.appendChild(scoreText);
-
-    const timeText = document.createElement('p');
-    timeText.textContent = timerDiv.textContent;
-    gameOverWindow.appendChild(timeText);
+        args.forEach(arg => {
+            const p = document.createElement('p');
+            p.classList.add('popup-args-p');
+            p.textContent = arg;
+            popupArgsDiv.appendChild(p);
+        });
+    }
+    
 
     const navBtnsDiv = document.createElement('div');
     navBtnsDiv.classList.add('nav-btns-div');
-    gameOverWindow.appendChild(navBtnsDiv);
+    popupScreenDiv.appendChild(navBtnsDiv);
     
-    const continueBtn = document.createElement('button');
-    continueBtn.classList.add('continue-game-btn');
-    continueBtn.textContent = 'Continue the game';
-    continueBtn.addEventListener('click', () => {
-        darkScreen.remove();
-        resumeGameTimer();
-        gameAudio.play();
-        gameAudio.volume = 0.4;
-    });
-    navBtnsDiv.appendChild(continueBtn);
-    
-    const EndGameBtn = document.createElement('button');
-    EndGameBtn.classList.add('end-game-btn');
-    EndGameBtn.textContent = 'End the game';
-    EndGameBtn.addEventListener('click', () => {
+    const backToMenuBtn = document.createElement('button');
+    backToMenuBtn.classList.add('back-to-menu-btn');
+    backToMenuBtn.classList.add('backToMenuBtn-' + bgColor);
+    backToMenuBtn.textContent = 'Back to Menu';
+    navBtnsDiv.appendChild(backToMenuBtn);
+
+    backToMenuBtn.addEventListener('click', () => {
         window.history.back();
     });
-    navBtnsDiv.appendChild(EndGameBtn);
+
+
+    if (isPlayAgainBtn) {
+        const playAgainBtn = document.createElement('button');
+        playAgainBtn.classList.add('play-again-btn');
+        playAgainBtn.classList.add('playAgainBtn-' + bgColor);
+        playAgainBtn.textContent = 'Play Again';
+        navBtnsDiv.appendChild(playAgainBtn);
+
+        playAgainBtn.addEventListener('click', () => {
+            window.location.reload();
+        });
+    } else {
+
+        const continueBtn = document.createElement('button');
+        continueBtn.classList.add('continue-game-btn');
+        continueBtn.classList.add('continueGameBtn-' + bgColor);
+        continueBtn.textContent = 'Continue the game';
+        navBtnsDiv.appendChild(continueBtn);
+    
+        continueBtn.addEventListener('click', () => {
+            darkScreenDiv.remove();
+            resumeGameTimer();
+            gameAudio.play();
+            gameAudio.volume = 0.4;
+        });
+    }
 }
+
