@@ -63,6 +63,11 @@ body {
 #pauseDiv, #timerDiv, #movesLeftDiv, #scoreDiv {
     margin: 5px;
 }
+#pauseDiv {
+    border-radius: 100%;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 
+                0 6px 10px rgba(0, 0, 0, 1); /* שכבת צל נוספת */
+}
 #timerDiv, #movesLeftDiv, #scoreDiv {
     display: flex;
     justify-content: center;
@@ -89,10 +94,10 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-top: 2px solid #73ffff;
+    /* border-top: 2px solid #73ffff; */
     border-right: none;
-    border-bottom: 2px solid #73ffff;
-    border-left: 2px solid #73ffff;
+    /* border-bottom: 2px solid #73ffff; */
+    /* border-left: 2px solid #73ffff; */
     /* border: 1px solid black; */
     border-radius: 30%;
     width: 72px;
@@ -101,9 +106,9 @@ body {
 }
 
 .moves-left-p, .score-p, .timer-p {
-    border-top: 2px solid #73ffff;
-    border-right: 2px solid #73ffff;
-    border-bottom: 2px solid #73ffff;
+    border-top: 2px solid #ff7373;
+    border-right: 2px solid #ff7373;
+    border-bottom: 2px solid #ff7373;
     border-left: none;
     padding: 5px;
     display: flex;
@@ -113,7 +118,7 @@ body {
 
     /* border: 1px solid black; */
     border-radius: 10px;
-    /* width: 140px; */
+    width: 80px;
     height: 20px;
 }
 
@@ -134,7 +139,7 @@ body {
 
 #pauseDiv {
     background-image: url("../dep/pauseBtn.png");
-    background-size: cover;
+    background-size: 120% 120%; 
     background-position: center;
     background-repeat: no-repeat;
     width: 45px;
@@ -146,7 +151,7 @@ body {
 
 #pauseDiv:hover {
     background-image: url("../dep/pauseBtnHover.png");
-    background-size: 120% 120%; 
+    background-size: 110% 110%; 
 }
 
 
