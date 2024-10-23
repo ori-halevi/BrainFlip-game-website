@@ -1,7 +1,10 @@
 let timerInterval;
 let secondsElapsed = 0;
 const timeLimit = localStorage.getItem('timeLimit') * 60;
+let remainingTime = timeLimit - secondsElapsed;
+let secondsPassed = 0;
 const timerDiv = document.getElementById('timerDiv');
+let avregeTime = (((secondsElapsed % 60) / cardsAmount).toFixed(2)) + "s";
 
 const timerH1 = document.createElement('timerH1');
 const timerP = document.createElement('timerP');
@@ -25,10 +28,11 @@ function startGameTimer() {
  * Displays the remaining time on the screen.
  */
 function displayTimer() {
-    const remainingTime = timeLimit - secondsElapsed;
+    remainingTime = timeLimit - secondsElapsed;
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
-
+    avregeTime = (((secondsElapsed % 60) / cardsAmount).toFixed(2)) + "s";
+    
     timerH1.textContent = "time:"
     timerDiv.appendChild(timerH1);
     timerP.textContent = `${minutes}m ${seconds}s`;
@@ -50,14 +54,11 @@ function resetGameTimer() {
     displayTimer();
 }
 
-/**
- * Checks if the time is up.
- */
+// Checks if the time is up.
 function checkIfTimeUp() {
     if (secondsElapsed >= timeLimit) {
         stopGameTimer();
-        console.log("Time's up!");
-        handleGameLost();
+        handleGameLost("Time's up!");
     }
 }
 

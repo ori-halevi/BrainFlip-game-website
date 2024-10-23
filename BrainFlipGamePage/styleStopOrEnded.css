@@ -11,6 +11,8 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
+    transition: opacity 0.5s ease;
+    opacity: 0;
 }
 
 
@@ -25,6 +27,21 @@
     padding: 20px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     border: 2px solid black;
+    transform: scale(0);
+    transition: transform 0.5s ease; /* אנימציה לסקלת */
+}
+
+.dark-screen.active {
+    opacity: 1;
+}
+
+.popup-screen.active {
+    transform: scale(1);
+}
+.popup-screen.closing {
+    transform: scale(0); /* הקטן את הפופ-אפ */
+    opacity: 0; /* הפוך את הפופ-אפ לשקוף */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* אנימציה לסקלת ולשקיפות */
 }
 
 
@@ -74,6 +91,11 @@
     padding: 10px;
     margin: 3px 9px;
     border-radius: 10px;
+    transition: all 0.5s ease;
+}
+.play-again-btn:hover, .continue-game-btn:hover, .back-to-menu-btn:hover {
+    cursor: pointer;
+    scale: 1.1;
 }
 
 
@@ -105,4 +127,33 @@
     background-color: #ffeeb1;
 }
 
+
+
+
+
+.score-loss-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5); /* התחלה מוקטנת */
+    color: white; /* צבע טקסט כהה */
+    font-size: 100px;
+    border-radius: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    padding: 10px;
+    z-index: 1000; /* ודא שזה מעל כל דבר אחר */
+    text-shadow: 0 0 2px rgb(255, 255, 255); /* הצללה */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* אנימציה */
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* שינוי גודל למצב רגיל */
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5); /* הקטנה לפני ההסרה */
+}
 

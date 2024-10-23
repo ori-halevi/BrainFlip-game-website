@@ -15,7 +15,9 @@ let userMidTurn = false;
 const easyMode = 3;
 const mediumMode = 2;
 const hardMode = 1.5;
-let difficultyLevel = easyMode;
+let difficultyLevel = mediumMode;
+
+let numberOfTurns = difficultyLevel * cardsAmount;
 
 let previousCardInfo = [null, null];
 let currentCardInfo = [null, null];
@@ -163,10 +165,9 @@ function onUserClickCard(card) {
 
     // Count open cards
     movesCounter++;
-    console.log(movesCounter);
 
+    // First card was clicked
     if (movesCounter === 1) {
-        // First card was clicked
         startGameTimer();
     }
 
@@ -186,20 +187,22 @@ function onUserClickCard(card) {
         handleSecondCardClick();  
         
         userMidTurn = !userMidTurn;
-        numberOfTurns--;
-        updateMovesLeftDisplay();
     }
-
-    
     
     // Check if the game is won
     if (matchs == cardsAmount) {
         handleGameWon();
         return;
     }
-    // Check if the game is over
+}
+
+
+function HendelSubtractTurnAndUpdateDisplay() {
+    numberOfTurns--;
+    updateMovesLeftDisplay();
+    // Check if out of moves
     if (numberOfTurns < 1) {
-        handleGameLost();
+        handleGameLost("Uh-oh, no moves left!");
         return;
     }
 }
@@ -233,6 +236,8 @@ function handleSecondCardClick() {
             cards.forEach(card => {
                 card.classList.add('red-border');
             });
+            // subtract 1 turn
+            HendelSubtractTurnAndUpdateDisplay();
         }, 300);
 
         setTimeout(() => {

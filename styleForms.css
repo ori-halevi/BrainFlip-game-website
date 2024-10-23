@@ -58,6 +58,13 @@
     font-size: calc(var(--forms-font-proportions) * 1.6);
 }
 
+#cardsAmountSelect * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 
 .forms .submitBtn {
     background-color: #F7241D;
