@@ -31,6 +31,20 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #headerDiv {
     display: flex;
     flex-direction: column;
@@ -51,7 +65,7 @@ body {
 }
 #timerDiv, #movesLeftDiv, #scoreDiv {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: row;
@@ -63,11 +77,12 @@ body {
     /* -webkit-text-stroke: 0.5px black; */
     font-size: 1.2rem;
     padding: 10px;
-    /* width: 140px; */
+    width: 90%;
     /* height: 80px; */
     backdrop-filter: blur(15px);
     /* text-shadow: 0px 0px 10px black; */
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 
+                0 6px 10px rgba(0, 0, 0, 1); /* שכבת צל נוספת */
 }
 
 .timer-icon-div, .score-icon-div, .moves-left-icon-div {
@@ -227,7 +242,7 @@ body {
     border-radius: var(--card-border-radius);
     backdrop-filter: blur(10px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 
-                0 6px 10px rgba(0, 0, 0, 0.3); /* שכבת צל נוספת */
+                0 6px 10px rgba(0, 0, 0, 1); /* שכבת צל נוספת */
     width: var(--card-width);
     height: var(--card-height);
     
