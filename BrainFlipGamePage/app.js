@@ -1,4 +1,3 @@
-
 const themeStylesheetLink = document.getElementById('CSSTheme');
 
 const cardsAmount = localStorage.getItem('cardsAmount');
