@@ -4,8 +4,8 @@
     --background-color: rgb(255, 246, 204);
 
     --card-border-radius: 12px;
-    --card-width: calc(50px * 2.8);
-    --card-height: calc(85px * 2.8);
+    --card-width: calc(50px * 2.5);
+    --card-height: calc(85px * 2.5);
 }
 
 body {
@@ -23,7 +23,10 @@ body {
     display: flex;
     flex-direction: row-reverse;
     align-items: stretch;
-    min-height: 99vh;
+    min-height: 100vh;
+    margin: 30px;
+    margin-right: 40px;
+    margin-left: 40px;
 }
 
 
@@ -35,7 +38,7 @@ body {
     align-items: center;
     position: fixed;
     padding: 15px;
-    left: 1%;
+    left: 3%;
     top: 5%;
     background-color: var(--footer-color);
     z-index: 1;
@@ -57,12 +60,14 @@ body {
     
     border: 2px solid #ff7373;
     border-radius: 30px;
-    -webkit-text-stroke: 0.5px black;
+    /* -webkit-text-stroke: 0.5px black; */
     font-size: 1.2rem;
     padding: 10px;
     /* width: 140px; */
     /* height: 80px; */
     backdrop-filter: blur(15px);
+    /* text-shadow: 0px 0px 10px black; */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
 .timer-icon-div, .score-icon-div, .moves-left-icon-div {
@@ -128,6 +133,15 @@ body {
     background-image: url("../dep/pauseBtnHover.png");
     background-size: 120% 120%; 
 }
+
+
+
+
+
+
+
+
+
 
 
 
