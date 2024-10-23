@@ -2,23 +2,28 @@ const movesLeftDiv = document.getElementById('movesLeftDiv');
 const scoreDiv = document.getElementById('scoreDiv');
 const pauseDiv = document.getElementById('pauseDiv');
 
-const scoreH1 = document.createElement('scoreH1');
-const scoreP = document.createElement('scoreP');
+const movesLeftIconDiv = document.createElement('div');
+movesLeftIconDiv.classList.add('moves-left-icon-div');
 
-const movesLeftH1 = document.createElement('movesLeftH1');
+
+const scoreIconDiv = document.createElement('div');
+scoreIconDiv.classList.add('score-icon-div');
+const scoreP = document.createElement('p');
+
+// const movesLeftH1 = document.createElement('movesLeftH1');
 const movesLeftP = document.createElement('movesLeftP');
 
 function updateMovesLeftDisplay() {
-    movesLeftH1.textContent = `Moves:`;
-    movesLeftDiv.appendChild(movesLeftH1);
+    movesLeftDiv.appendChild(movesLeftIconDiv);
     movesLeftP.textContent = `${numberOfTurns}`;
+    movesLeftP.classList.add('moves-left-p');
     movesLeftDiv.appendChild(movesLeftP);
 }
 
 function updateScoreDisplay() {
-    scoreH1.textContent = `Score:`;
-    scoreDiv.appendChild(scoreH1);
+    scoreDiv.appendChild(scoreIconDiv);
     scoreP.textContent = `${score} ⭐`;
+    scoreP.classList.add('score-p');
     scoreDiv.appendChild(scoreP);
 }
 

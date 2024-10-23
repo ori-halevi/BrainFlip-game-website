@@ -6,8 +6,11 @@ let secondsPassed = 0;
 const timerDiv = document.getElementById('timerDiv');
 let avregeTime = (((secondsElapsed % 60) / cardsAmount).toFixed(2)) + "s";
 
-const timerH1 = document.createElement('timerH1');
+// const timerH1 = document.createElement('timerH1');
+const timerIconDiv = document.createElement('div');
+timerIconDiv.classList.add('timer-icon-div');
 const timerP = document.createElement('timerP');
+timerP.classList.add('timer-p');
 
 /**
  * Starts the game timer when the game page is loaded.
@@ -33,8 +36,9 @@ function displayTimer() {
     const seconds = remainingTime % 60;
     avregeTime = (((secondsElapsed % 60) / cardsAmount).toFixed(2)) + "s";
     
-    timerH1.textContent = "time:"
-    timerDiv.appendChild(timerH1);
+    // timerH1.textContent = "time:"
+    // timerDiv.appendChild(timerH1);
+    timerDiv.appendChild(timerIconDiv);
     timerP.textContent = `${minutes}m ${seconds}s`;
     timerDiv.appendChild(timerP);
 }

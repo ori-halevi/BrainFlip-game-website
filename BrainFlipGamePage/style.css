@@ -48,18 +48,65 @@ body {
 }
 #timerDiv, #movesLeftDiv, #scoreDiv {
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    position: relative;
+    color: white;
+    
+    border: 2px solid #ff7373;
+    border-radius: 30px;
+    -webkit-text-stroke: 0.5px black;
+    font-size: 1.2rem;
+    padding: 10px;
+    /* width: 140px; */
+    /* height: 80px; */
+    backdrop-filter: blur(15px);
+}
+
+.timer-icon-div, .score-icon-div, .moves-left-icon-div {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top: 2px solid #73ffff;
+    border-right: none;
+    border-bottom: 2px solid #73ffff;
+    border-left: 2px solid #73ffff;
+    /* border: 1px solid black; */
+    border-radius: 30%;
+    width: 72px;
+    height: 72px;
+    /* margin: 10px; */
+}
+
+.moves-left-p, .score-p, .timer-p {
+    border-top: 2px solid #73ffff;
+    border-right: 2px solid #73ffff;
+    border-bottom: 2px solid #73ffff;
+    border-left: none;
+    padding: 5px;
+    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    flex-direction: column;
-    position: relative;
 
-    font-size: 1rem;
-    border: 2px solid black;
-    background-color: rgb(248, 235, 235);
-    border-radius: 20px;
-    width: 80px;
-    height: 80px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    /* width: 140px; */
+    height: 20px;
+}
+
+
+.moves-left-icon-div {
+    background-image: url("../dep/refresh.png");
+}
+.timer-icon-div {
+    background-image: url("../dep/stopwatch.png");
+}
+
+.score-icon-div {
+    background-image: url("../dep/archery.png");
 }
 
 
