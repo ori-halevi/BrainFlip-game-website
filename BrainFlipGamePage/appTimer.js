@@ -1,10 +1,12 @@
 let timerInterval;
 let secondsElapsed = 0;
-const timeLimit = localStorage.getItem('timeLimit') * 60;
+// const timeLimit = localStorage.getItem('timeLimit') * 60;
+
 let remainingTime = timeLimit - secondsElapsed;
 let secondsPassed = 0;
 const timerDiv = document.getElementById('timerDiv');
 let avregeTime = (((secondsElapsed % 60) / cardsAmount).toFixed(2)) + "s";
+console.log(difficultyLevel);
 
 // const timerH1 = document.createElement('timerH1');
 const timerIconDiv = document.createElement('div');

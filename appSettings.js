@@ -1,7 +1,7 @@
 // This script responsible for settings page logic
 
 const cardsAmount = document.getElementById("cardsAmountSelect");
-const timeLimit = document.getElementById("timeLimitSelect");
+const difficultySelect = document.getElementById("difficultySelect");
 
 const scoreboardDiv = document.getElementById("scoreboardDiv");
 
@@ -15,6 +15,14 @@ const learnEnglishToggleSwitch = document.getElementById('learnEnglishToggleSwit
 const gameAudioTggleButtonOn = document.getElementById('gameAudioTggleButtonOn');
 const gameAudioTggleButtonOff = document.getElementById('gameAudioTggleButtonOff');
 
+
+
+
+
+// Upload the selected difficulty level to local storage
+difficultySelect.addEventListener("change", function () {
+    localStorage.setItem("difficulty", difficultySelect.value);
+});
 
 
 
@@ -80,7 +88,6 @@ async function loadUsers() {
 
 async function updateLocalStorage() {
     localStorage.setItem("cardsAmount", cardsAmount.value);
-    localStorage.setItem("timeLimit", timeLimit.value);
     localStorage.setItem("learnEnglish", learnEnglishToggleSwitch.checked);
 };
 

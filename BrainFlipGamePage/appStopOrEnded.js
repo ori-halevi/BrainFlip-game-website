@@ -3,6 +3,7 @@
  */
 function handleGameWon() {
     score += 5 * (5 - difficultyLevel);
+    score = Math.round(score * 1) / 1;
     let userHighestScore = localStorage.getItem('userHighestScore');
 
     if (userHighestScore < score) {
@@ -14,7 +15,7 @@ function handleGameWon() {
     stopGameTimer();
     setTimeout(() => {
         gameAudio.pause();
-        createScreenOnTheGame("green", "Game won", "You won!", true, "Your score: " + score + " ⭐", "Remaining moves: " + numberOfTurns, "Time: " + timerP.textContent + "/" + (timeLimit / 60) + "m", "Avrege time: " + avregeTime);
+        createScreenOnTheGame("green", "Game won", "You won!", true, "Your score: " + score + " ⭐", "Remaining moves: " + numberOfTurns, "Time: " + timerP.textContent + "/" + timeLimitInMinutes + "s", "Avrege time: " + avregeTime);
     }, 1300);
 }
 

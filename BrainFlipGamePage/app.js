@@ -12,12 +12,12 @@ const gameAudioWrong = document.getElementById('gameAudioWrong');
 
 let userMidTurn = false;
 
-const easyMode = 3;
-const mediumMode = 2;
-const hardMode = 1.5;
-let difficultyLevel = mediumMode;
+const easyMode = 2;
+const mediumMode = 1.5;
+const hardMode = 1.25;
 
-let numberOfTurns = difficultyLevel * cardsAmount;
+const baseTimePerCard = 10;
+let difficultyLevel, timeLimit, timeLimitInMinutes, numberOfTurns;
 
 let previousCardInfo = [null, null];
 let currentCardInfo = [null, null];
@@ -39,7 +39,7 @@ async function initialGame() {
     loadTheme();
     gameAudio.play();
     gameAudio.volume = 0.4;
-    
+    setDifficulty();
     if (localStorage.getItem("learnEnglish") === "true") {
         await loadLearnEnglishDictionaryToLocalStotrage().then(() => {
             MainSpreadCards();
@@ -62,6 +62,30 @@ async function initialGame() {
     // }, 1000); // 500 מילישניות
 
 };
+
+
+
+function setDifficulty() {
+    if (localStorage.getItem('difficulty') === 'easy') {
+        difficultyLevel = easyMode;
+    } else if (localStorage.getItem('difficulty') === 'medium') {
+        difficultyLevel = mediumMode;
+    } else if (localStorage.getItem('difficulty') === 'hard') {
+        difficultyLevel = hardMode;
+    } else {
+        difficultyLevel = mediumMode;
+    }
+
+    // חישוב כמות התורות המותרת
+    numberOfTurns = difficultyLevel * (cardsAmount * 2);
+    
+    // חישוב זמן מוקצב
+    timeLimit = difficultyLevel * (cardsAmount * baseTimePerCard);
+    timeLimitInMinutes = timeLimit;
+    if (timeLimit > 60) {
+        timeLimitInMinutes = (timeLimit / 60).toFixed(2);
+    }
+}
 
 
 function createCard(cardID, cardCoupleName, engHebWordsKeyValue = null) {
@@ -248,6 +272,7 @@ function handleSecondCardClick() {
             }
         })
         score += 21 - (timeLimit / 60) + (cardsAmount - 10);
+        score = Math.round(score * 1) / 1;
         updateScoreDisplay();
         matchs++;
         

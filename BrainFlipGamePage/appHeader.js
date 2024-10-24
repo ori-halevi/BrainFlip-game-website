@@ -13,6 +13,7 @@ const scoreP = document.createElement('p');
 // const movesLeftH1 = document.createElement('movesLeftH1');
 const movesLeftP = document.createElement('movesLeftP');
 
+
 function updateMovesLeftDisplay() {
     movesLeftDiv.appendChild(movesLeftIconDiv);
     movesLeftP.textContent = `${numberOfTurns}`;
@@ -31,5 +32,5 @@ pauseDiv.addEventListener('click', () => {
     removePointsFromUserScore(2);
     pauseGameTimer();
     gameAudio.pause();
-    createScreenOnTheGame("yellow", "Game paused", "Gotta pee, huh?", false, "Your score so far: " + score + " ⭐", "Remaining moves: " + numberOfTurns, "Time: " + timerP.textContent + "/" + (timeLimit / 60) + "m");
+    createScreenOnTheGame("yellow", "Game paused", "Gotta pee, huh?", false, "Your score so far: " + score + " ⭐", "Remaining moves: " + numberOfTurns, "Time: " + timerP.textContent + "/" + timeLimitInMinutes + "s");
 })
