@@ -274,7 +274,7 @@ body {
 
 
 
-#showScoreboardBtn {
+#showScoreboardBtn, #scoreboardBackBtn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -285,7 +285,10 @@ body {
     border: 1px solid black;
     height: 35px;
 }
-
+#showScoreboardBtn:hover, #scoreboardBackBtn:hover {
+    background-color: #F2F2F2;
+    transform: scale(1.05);
+}
 
 
 
