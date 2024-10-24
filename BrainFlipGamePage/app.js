@@ -31,10 +31,25 @@ let waitForAnimation = false;
 
 
 window.onload = () => {
+    initialGame();
+
+};
+async function initialGame() {
+    
     loadTheme();
     gameAudio.play();
     gameAudio.volume = 0.4;
-    MainSpreadCards();
+    
+    if (localStorage.getItem("learnEnglish") === "true") {
+        await loadLearnEnglishDictionaryToLocalStotrage().then(() => {
+            MainSpreadCards();
+            
+        })
+    } else {
+        MainSpreadCards();
+    }
+
+    defineGridAndCardsSize();
     updateMovesLeftDisplay();
     updateScoreDisplay();
     displayTimer();
@@ -45,9 +60,8 @@ window.onload = () => {
     // setTimeout(function() {
     //     window.scrollBy({ top: -100, behavior: 'smooth' }); // גולל את העמוד 20 פיקסלים למטה
     // }, 1000); // 500 מילישניות
+
 };
-
-
 
 
 function createCard(cardID, cardCoupleName, engHebWordsKeyValue = null) {
@@ -84,13 +98,15 @@ function createCard(cardID, cardCoupleName, engHebWordsKeyValue = null) {
         const wordsDiv = document.createElement('div');
         wordsDiv.classList.add('words-div');
         cardBackSecondLayer.appendChild(wordsDiv);
+        const wordsP = document.createElement('p');
+        wordsP.classList.add('words-p');
+        wordsDiv.appendChild(wordsP);
+
 
         if (card.dataset.id % 2 === 0) {
-            let cardBackText = document.createTextNode(`${engHebWordsKeyValue.key}` );
-            wordsDiv.appendChild(cardBackText);
+            wordsP.textContent = `${engHebWordsKeyValue.key}`;
         } else {
-            let cardBackText = document.createTextNode(`${engHebWordsKeyValue.value}`);
-            wordsDiv.appendChild(cardBackText);
+            wordsP.textContent = `${engHebWordsKeyValue.value}`;
         }
     }
 
@@ -116,7 +132,7 @@ function MainSpreadCards() {
     let i = 0; // משתנה שיגדל ב-2
     
     for (let count = 0; count < cardsAmount; count++) {
-        // get random word in english and hebrew     
+        // get random word in english and hebrew
         const engHebWordsKeyValue = getRandomKeyAndRemoveFromStorage();
         
      // create first card
@@ -216,14 +232,24 @@ function flipCard(card) {
 
 function handleSecondCardClick() {
     // תפיסת כל האלמנטים עם המחלקה 'card'
-    const cards = document.querySelectorAll('.card');
+    const cards = document.querySelectorAll('.cardAreaFlip');
 
     if (previousCardInfo[0] === currentCardInfo[0]) {
+        cards.forEach(card => {
+            if (card.dataset.couple == previousCardInfo[0]) {
+                setTimeout(() => {
+                    card.classList.add('green-border');
+                    gameAudioMatch.currentTime = 0;
+                    gameAudioMatch.play();
+                }, 300);
+                // setTimeout(() => {
+                //     card.classList.remove('green-border');
+                // }, 1000);
+            }
+        })
         score += 21 - (timeLimit / 60) + (cardsAmount - 10);
         updateScoreDisplay();
         matchs++;
-        gameAudioMatch.currentTime = 0;
-        gameAudioMatch.play();
         
         waitForAnimation = false;
 
@@ -232,7 +258,6 @@ function handleSecondCardClick() {
             gameAudioWrong.currentTime = 0;
             gameAudioWrong.play();
             // red color border for all cards
-            const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
                 card.classList.add('red-border');
             });
@@ -261,3 +286,46 @@ function loadTheme() {
     themeStylesheetLink.setAttribute("href", "../style-theme-" + theme + ".css");
 }
 
+function defineGridAndCardsSize() {
+    const cardsAmount = localStorage.getItem('cardsAmount');
+    // גישה ל-styles של root
+    document.documentElement.style.setProperty('--number-of-cards', cardsAmount * 2);
+
+    let fontSizeForWords = '1rem';
+    if (cardsAmount == 4) {
+        document.documentElement.style.setProperty('--number-of-cards', 8);
+        document.documentElement.style.setProperty('--number-of-columns', 4);
+        document.documentElement.style.setProperty('--number-of-rows', 2);
+        document.documentElement.style.setProperty('--card-height-and-width', 11);
+        fontSizeForWords = '1.7rem';
+    } else if (cardsAmount == 6) {
+        document.documentElement.style.setProperty('--number-of-cards', 12);
+        document.documentElement.style.setProperty('--number-of-columns', 6);
+        document.documentElement.style.setProperty('--number-of-rows', 2);
+        document.documentElement.style.setProperty('--card-height-and-width', 13);
+        fontSizeForWords = '1.6rem';
+    } else if (cardsAmount == 15) {
+        document.documentElement.style.setProperty('--number-of-cards', 30);
+        document.documentElement.style.setProperty('--number-of-columns', 10);
+        document.documentElement.style.setProperty('--number-of-rows', 3);
+        document.documentElement.style.setProperty('--card-height-and-width', 17);
+        fontSizeForWords = '1.1rem';
+    } else if (cardsAmount == 26) {
+        document.documentElement.style.setProperty('--number-of-cards', 52);
+        document.documentElement.style.setProperty('--number-of-columns', 13);
+        document.documentElement.style.setProperty('--number-of-rows', 4);
+        document.documentElement.style.setProperty('--card-height-and-width', 19);
+        fontSizeForWords = '0.8rem';
+    } else if (cardsAmount == 57) {
+        document.documentElement.style.setProperty('--number-of-cards', 114);
+        document.documentElement.style.setProperty('--number-of-columns', 19);
+        document.documentElement.style.setProperty('--number-of-rows', 6);
+        document.documentElement.style.setProperty('--card-height-and-width', 23);
+        fontSizeForWords = '0.5rem';
+
+    }
+    const allWordsP = document.querySelectorAll('.words-p');
+    allWordsP.forEach(wordP => {
+        wordP.style.fontSize = fontSizeForWords;
+    });
+}

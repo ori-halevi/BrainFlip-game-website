@@ -82,9 +82,6 @@ async function updateLocalStorage() {
     localStorage.setItem("cardsAmount", cardsAmount.value);
     localStorage.setItem("timeLimit", timeLimit.value);
     localStorage.setItem("learnEnglish", learnEnglishToggleSwitch.checked);
-    if (localStorage.getItem("learnEnglish") === "true") {
-        await loadLearnEnglishDictionaryToLocalStotrage();
-    }
 };
 
 

@@ -12,9 +12,10 @@ function handleGameWon() {
 
     // Stop the game timer
     stopGameTimer();
-    gameAudio.pause();
-    createScreenOnTheGame("green", "Game won", "You won!", true, "Your score: " + score + " ⭐", "Remaining moves: " + numberOfTurns, "Time: " + timerP.textContent + "/" + (timeLimit / 60) + "m", "Avrege time: " + avregeTime);
-
+    setTimeout(() => {
+        gameAudio.pause();
+        createScreenOnTheGame("green", "Game won", "You won!", true, "Your score: " + score + " ⭐", "Remaining moves: " + numberOfTurns, "Time: " + timerP.textContent + "/" + (timeLimit / 60) + "m", "Avrege time: " + avregeTime);
+    }, 1300);
 }
 
 

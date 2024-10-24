@@ -2,7 +2,7 @@
 
 async function getEngHebDictionary() {
     try {
-        const response = await fetch('./eng-heb-dict.json');
+        const response = await fetch('../eng-heb-dict.json');
         if (!response.ok) {
             throw new Error('Failed to fetch the dictionary');
         }
@@ -55,7 +55,7 @@ function getRandomKeyAndRemoveFromStorage() {
 
     // If the dictionary is empty after the removal, remove it from localStorage
     if (Object.keys(dictionary).length === 0) {
-        localStorage.removeItem("learn-English-dictionary"); // Remove from storage
+        localStorage.removeItem("learn-English-dictionary");
     } else {
         // If items remain in the dictionary, update it in localStorage
         localStorage.setItem("learn-English-dictionary", JSON.stringify(dictionary));

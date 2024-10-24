@@ -1,11 +1,41 @@
 :root {
     /* --footer-color:  rgb(115, 235, 115); */
     /* --gold-color: rgb(255, 215, 0); */
-    --background-color: rgb(255, 246, 204);
+    
 
-    --card-border-radius: 12px;
-    --card-width: calc(50px * 2.5);
-    --card-height: calc(85px * 2.5);
+    /* --number-of-cards: 114;
+    --number-of-columns: 19;
+    --number-of-rows: 6;
+    --card-height-and-width: 23; */
+
+    /* --number-of-cards: 52;
+    --number-of-columns: 13;
+    --number-of-rows: 4;
+    --card-height-and-width: 19; */
+
+    /* --number-of-cards: 30;
+    --number-of-columns: 10;
+    --number-of-rows: 3;
+    --card-height-and-width: 17; */
+
+    /* --number-of-cards: 12;
+    --number-of-columns: 6;
+    --number-of-rows: 2;
+    --card-height-and-width: 13; */
+
+    /* --number-of-cards: 8;
+    --number-of-columns: 4;
+    --number-of-rows: 2;
+    --card-height-and-width: 11; */
+
+
+    --card-border-radius: 10px;
+    --card-width: calc(10px * var(--card-height-and-width));
+    --card-height: calc(17px * var(--card-height-and-width));
+}
+
+html {
+    height: 100vh;
 }
 
 body {
@@ -21,14 +51,17 @@ body {
 
 #mainContainerDiv {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: stretch;
-    min-height: 100vh;
-    margin: 30px;
-    margin-right: 40px;
-    margin-left: 40px;
+    height: 90vh;
+    margin: 35px;
+    gap: 10px;
 }
 
+#bodyDiv {
+    height: 90vh;
+    width: 100%;
+}
 
 
 
@@ -50,12 +83,12 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    position: fixed;
+    /* position: fixed; */
     padding: 15px;
-    left: 3%;
-    top: 5%;
+    /* left: 3%; */
+    /* top: 5%; */
     background-color: var(--footer-color);
-    z-index: 1;
+    /* z-index: 1; */
     gap: 20px;
     
 }
@@ -153,138 +186,3 @@ body {
     background-image: url("../dep/pauseBtnHover.png");
     background-size: 110% 110%; 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#cardsContainer {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-column-gap: 50px;
-    grid-row-gap: 50px;
-    justify-items: center;
-    align-items: center;
-    padding: 20px;
-    /* border: 1px solid black; */
-    border-radius: 10px;
-}
-
-
-
-
-
-
-
-.cardAreaFlip {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: var(--card-border-radius);
-    position: relative;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    width: var(--card-width);
-    height: var(--card-height);
-    }
-
-
-
-.front,
-.back {
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backface-visibility: hidden; /* מסתיר את הצד האחורי */
-}
-
-.front {
-  /* background-color: lightblue; */
-  font-size: 3rem;
-  transform: rotateY(180deg); /* מסובב את הצד האחורי */
-}
-
-.back {
-  font-size: 3rem;
-  color: white;
-}
-
-.cardBackSecondLayer {
-    width: 95%;
-    height: 95%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-}
-
-.flip {
-    transform: rotateY(180deg);
-}
-
-.card {
-    cursor: pointer;
-    border: 0px solid white;
-    border-radius: var(--card-border-radius);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 
-                0 6px 10px rgba(0, 0, 0, 1); /* שכבת צל נוספת */
-    width: var(--card-width);
-    height: var(--card-height);
-    
-}
-
-.cardImg {
-    width: 95%;
-    height: 95%;
-    object-fit: contain;
-    border-radius: var(--card-border-radius);
-
-}
-
-.words-div {
-    display: flex;
-    justify-content: center;
-    width: 80%;
-    text-align: center;
-    padding: 3px;
-    font-size: 1.5rem;
-    color: green;
-    border-radius: 20px;
-    border: 2px solid black;
-    background-color: wheat;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

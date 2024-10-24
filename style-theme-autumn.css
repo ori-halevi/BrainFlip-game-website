@@ -28,7 +28,3 @@
     border: 1px solid #9c7c4a;
     border-radius: var(--card-border-radius);
 }
-
-.red-border {
-    border: 1px solid red;
-}
