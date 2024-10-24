@@ -10,8 +10,7 @@ function validateLoginForm() {
     if (password === "") {
         alertUser("Please enter your password.");
         return false;
-    }
-
+    } 
     return true;
 }
 
