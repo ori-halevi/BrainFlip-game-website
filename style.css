@@ -141,8 +141,8 @@ body {
 
 
 @media (max-width: 480px) {
-    #headerDiv {
-        
+    #mainContainerDiv {
+        position: fixed;
     }
     #logoDiv {
         height: auto;
