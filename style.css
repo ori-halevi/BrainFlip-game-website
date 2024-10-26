@@ -140,6 +140,43 @@ body {
 
 
 
+@media (max-width: 768px) {
+    #logoDiv {
+        height: 80px;
+        width: 200px;
+        margin: 0px 10px;
+    }
+
+    .season-images-container {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+    }
+
+    .log-out-div {
+        height: 40px;
+        width: 40px;
+        margin: 5px;
+    }
+}
+@media (max-width: 600px) {
+    .season-image.active, .season-image:not(.active) {
+        animation-duration: 4s; /* הארכת זמן האנימציה למסכים קטנים */
+    }
+}
+.log-out-div:hover {
+    background-color: var(--hover-button-color);
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -151,10 +188,6 @@ body {
     width: 100%;
 
 }
-
-
-
-
 
 
 
@@ -199,6 +232,11 @@ body {
 
 
 
+@media (max-width: 600px) {
+    #logo {
+        font-size: 4rem; /* התאמת גודל הפונט למסכים קטנים */
+    }
+}
 
 
 
@@ -234,7 +272,21 @@ body {
     font-weight: bold;
 }
 
+#forgotPassword:hover, #createAccount:hover, #backToLogin:hover {
+    color: #A30000; /* גוון כהה יותר */
+    text-decoration: underline;
+}
 
+
+
+@media (max-width: 600px) {
+    #forgotPassword {
+        font-size: 0.6rem;
+    }
+    #createAccount, #backToLogin {
+        font-size: 0.9rem;
+    }
+}
 
 
 
@@ -327,6 +379,38 @@ body {
 }
 
 
+@media (max-width: 600px) {
+    #startGameBtn {
+        font-size: 1.2rem;
+        height: 35px;
+    }
+    
+    #showScoreboardBtn, #scoreboardBackBtn {
+        font-size: 0.9rem;
+        height: 30px;
+    }
+
+    #scoreboardDiv {
+        padding: 15px;
+        gap: 15px;
+        margin: 15px;
+    }
+
+    #scoreboardH2Div {
+        font-size: 1.5rem;
+    }
+
+    #scoreboardList {
+        font-size: 1rem;
+        margin: 0 15px;
+    }
+}
+
+
+
+
+
+
 
 
 
@@ -387,6 +471,28 @@ input:checked + .toggle-switch-slider:before {
 
 
 
+@media (max-width: 600px) {
+    .switch {
+        width: 20px;
+        height: 12px;
+    }
+
+    .toggle-switch-slider {
+        border-radius: 17px;
+    }
+
+    .toggle-switch-slider:before {
+        height: 10px;
+        width: 10px;
+        left: 1px;
+        bottom: 1px;
+    }
+
+    /* Move the slider for smaller screens */
+    input:checked + .toggle-switch-slider:before {
+        transform: translateX(8px);
+    }
+}
 
 
 
