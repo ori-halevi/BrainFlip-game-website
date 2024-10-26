@@ -140,7 +140,7 @@ body {
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     #logoDiv {
         height: 80px;
         width: 200px;
@@ -158,12 +158,12 @@ body {
         width: 40px;
         margin: 5px;
     }
-}
-@media (max-width: 600px) {
+    
     .season-image.active, .season-image:not(.active) {
         animation-duration: 4s; /* הארכת זמן האנימציה למסכים קטנים */
     }
 }
+
 .log-out-div:hover {
     background-color: var(--hover-button-color);
 }
@@ -232,7 +232,7 @@ body {
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     #logo {
         font-size: 4rem; /* התאמת גודל הפונט למסכים קטנים */
     }
@@ -279,7 +279,7 @@ body {
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     #forgotPassword {
         font-size: 0.6rem;
     }
@@ -379,7 +379,7 @@ body {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     #startGameBtn {
         font-size: 1.2rem;
         height: 35px;
@@ -471,7 +471,7 @@ input:checked + .toggle-switch-slider:before {
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     .switch {
         width: 20px;
         height: 12px;
@@ -515,4 +515,11 @@ input:checked + .toggle-switch-slider:before {
     /* bottom: 0; */
     width: 100%;
     
+}
+@media (max-width: 480px) {
+    #footerDiv {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
 }

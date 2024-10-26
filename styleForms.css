@@ -105,7 +105,7 @@
 
 
 /* התאמות מובייל */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     .forms {
         width: 90vw; /* הרחבה כמעט מלאה למסכי מובייל */
         padding: 15px;
@@ -124,14 +124,5 @@
 
     #forgotPassword, #createAccount {
         font-size: calc(var(--forms-font-proportions) * 1.5); /* התאמה עבור קישורים */
-    }
-}
-
-/* התאמות מסכים רחבים יותר - טאבלטים */
-@media (max-width: 768px) {
-    .forms {
-        width: 70vw;
-        padding: 18px;
-        gap: 18px;
     }
 }

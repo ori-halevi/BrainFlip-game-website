@@ -157,3 +157,20 @@
     transform: translate(-50%, -50%) scale(0.5); /* הקטנה לפני ההסרה */
 }
 
+
+
+
+/* מדיה קוורי לרספונסיביות */
+@media (max-width: 480px) {
+    .popup-screen {
+        font-size: 1.5rem; /* הפחתת גודל טקסט במכשירים קטנים יותר */
+    }
+
+    .play-again-btn, .continue-game-btn, .back-to-menu-btn {
+        font-size: 0.9rem; /* הפחתת גודל כפתורים */
+    }
+
+    .titles-div h1, .titles-div h2 {
+        font-size: 1.2rem; /* הפחתת גודל כותרות */
+    }
+}

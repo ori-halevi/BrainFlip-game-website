@@ -146,3 +146,27 @@
     border: 1px solid rgb(108, 255, 108);
     box-shadow: 0 0 30px rgb(108, 255, 108);
 }
+
+
+
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+    #cardsContainer {
+        height: 300px;
+        width: 100vw;
+        grid-template-columns: repeat(calc(var(--number-of-rows) + 2), calc(var(--card-width) / calc(var(--number-of-cards) / var(--card-height-and-width))));
+        grid-template-rows: repeat(calc(var(--number-of-columns)), calc(var(--card-height) / calc(var(--number-of-cards) / var(--card-height-and-width))));
+     
+    }
+
+    .front, .back {
+        font-size: 1.5rem;
+    }
+
+    .words-div {
+        max-width: 60%;
+        max-height: 60%;
+        font-size: 0.8rem;
+    }
+}
