@@ -141,10 +141,12 @@ body {
 
 
 @media (max-width: 480px) {
+    #headerDiv {
+        
+    }
     #logoDiv {
-        height: 80px;
+        height: auto;
         width: 200px;
-        margin: 0px 10px;
     }
 
     .season-images-container {
@@ -195,7 +197,7 @@ body {
 
 #logo {
     font-size: 8rem;
-    margin: 0;
+    margin: 10px 0 0 0;
     display: flex;
     color: red; /* צבע האותיות */
     text-shadow: 
@@ -230,11 +232,9 @@ body {
 
 
 
-
-
 @media (max-width: 480px) {
     #logo {
-        font-size: 4rem; /* התאמת גודל הפונט למסכים קטנים */
+        font-size: 5rem; /* התאמת גודל הפונט למסכים קטנים */
     }
 }
 

@@ -29,3 +29,5 @@
     border-radius: var(--card-border-radius);
 }
 
+@media (max-width: 480px) {
+}

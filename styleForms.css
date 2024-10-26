@@ -107,9 +107,9 @@
 /* התאמות מובייל */
 @media (max-width: 480px) {
     .forms {
-        width: 90vw; /* הרחבה כמעט מלאה למסכי מובייל */
-        padding: 15px;
-        gap: 15px;
+        width: 70vw;
+        padding: 18px;
+        gap: 18px;
     }
 
     .forms input, .forms select {
@@ -119,10 +119,10 @@
 
     .forms .submitBtn {
         font-size: calc(var(--forms-font-proportions) * 1.5); /* הקטנת גודל הפונט בכפתור */
-        padding: 10px;
     }
 
     #forgotPassword, #createAccount {
         font-size: calc(var(--forms-font-proportions) * 1.5); /* התאמה עבור קישורים */
     }
 }
+

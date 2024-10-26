@@ -41,6 +41,7 @@ html {
 body {
     margin: 0;
     scroll-behavior: smooth;
+    /* height: 100vh; */
 }
 
 /* div {
@@ -167,7 +168,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-
+    margin: 0;
     /* border: 1px solid black; */
     border-radius: 10px;
     width: 80px;
@@ -241,8 +242,8 @@ body {
     } */
 
     .timer-icon-div, .score-icon-div, .moves-left-icon-div {
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
     }
 
     .moves-left-p, .score-p, .timer-p {
