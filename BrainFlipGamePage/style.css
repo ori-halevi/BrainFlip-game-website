@@ -70,8 +70,11 @@ body {
         --card-width: calc(8px * var(--card-height-and-width));
         --card-height: calc(12px * var(--card-height-and-width));
     }
-
+    html {
+        width: 400px;
+    }
     #mainContainerDiv {
+        position: fixed;
         flex-direction: column;
         align-items: center;
         justify-content: center;
