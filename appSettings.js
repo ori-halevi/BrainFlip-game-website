@@ -64,8 +64,11 @@ startGameBtn.addEventListener("click", async function (event) {
 
 async function loadTopTen() {
     const users = await loadUsers();
+    console.log(users);
+    
     const topTenUsers = users.sort((a, b) => b["highest-score"] - a["highest-score"]).slice(0, 10);
-
+    console.log(topTenUsers);
+    
     // Display the names and scores of the ten users with the highest scores
     document.getElementById("scoreboardList").innerHTML = ''; // Clear the previous list of users
     topTenUsers.forEach(user => {
@@ -93,9 +96,10 @@ async function updateLocalStorage() {
 
 
 function updateUserNameDisplayOnGameSettingsForm() {
-    const userData = localStorage.getItem('user');
-    const currentUser = userData ? JSON.parse(userData) : { username: 'Guest' };
-    document.getElementById('usernameDisplay').textContent = currentUser.username;
+    const userData = JSON.parse(localStorage.getItem('currentUser'));
+    
+    const currentUser = userData.username || 'Guest';
+    document.getElementById('usernameDisplay').textContent = currentUser;
 }
 
 

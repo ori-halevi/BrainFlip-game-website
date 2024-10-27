@@ -1,86 +1,74 @@
-[
-    {
+{
+    "somemail@gmail.com": {
         "username": "Ori",
         "password": "1234",
-        "email": "somemail@gmail.com",
         "highest-score": 311,
         "total-accumulated-grades": 1200
     },
-    {
+    "somemail2@gmail.com": {
         "username": "yossi",
         "password": "4321",
-        "email": "somemail2@gmail.com",
         "highest-score": 150,
         "total-accumulated-grades": 890
-    },
-    {
+    },  
+    "lior@mail.com": {
         "username": "lior123",
         "password": "pass123",
-        "email": "lior@mail.com",
         "highest-score": 200,
         "total-accumulated-grades": 950
     },
-    {
+    "ronny98@hotmail.com": {
         "username": "ronny98",
         "password": "ronnyStrong98",
-        "email": "ronny98@hotmail.com",
         "highest-score": 120,
         "total-accumulated-grades": 610
     },
-    {
+    "maya2024@yahoo.com": {
         "username": "maya2024",
         "password": "mayaIsBest",
-        "email": "maya2024@yahoo.com",
         "highest-score": 180,
         "total-accumulated-grades": 760
     },
-    {
+    "aviking@gmail.com": {
         "username": "Anya",
         "password": "12345",
-        "email": "aviking@gmail.com",
         "highest-score": 220,
         "total-accumulated-grades": 940
     },
-    {
+    "eden987@walla.co.il": {
         "username": "eden987",
         "password": "passEden",
-        "email": "eden987@walla.co.il",
         "highest-score": 190,
         "total-accumulated-grades": 810
     },
-    {
+    "shiran_super@gmail.com": {
         "username": "shiran_super",
         "password": "shirTop",
-        "email": "shiran_super@gmail.com",
         "highest-score": 160,
         "total-accumulated-grades": 680
     },
-    {
+    "danman123@outlook.com": {
         "username": "Omer",
         "password": "dannyPass",
-        "email": "danman123@outlook.com",
         "highest-score": 250,
         "total-accumulated-grades": 1120
     },
-    {
+    "gilad1@ynet.co.il": {
         "username": "gilad123",
         "password": "giladStrong",
-        "email": "gilad1@ynet.co.il",
         "highest-score": 170,
         "total-accumulated-grades": 770
     },
-    {
+    "neta_cool@israelmail.com": {
         "username": "netaCool",
         "password": "coolPass2024",
-        "email": "neta_cool@israelmail.com",
         "highest-score": 140,
         "total-accumulated-grades": 640
     },
-    {
+    "omerZ@gmail.com": {
         "username": "omerZ",
         "password": "zomer234",
-        "email": "omerZ@gmail.com",
         "highest-score": 130,
         "total-accumulated-grades": 610
     }
-]
+}

@@ -19,8 +19,8 @@ const gameAudioMenuSelection = document.getElementById('gameAudioMenuSelection')
 
 window.onload = function() {
     // in case the user is logged in
-    const user = localStorage.getItem('user');
-    if (user) {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
         showHomePageScreen()
     } else {
         showLogoBigScreen();
@@ -38,7 +38,9 @@ logoDiv.addEventListener('click', function(event) {
 })
 
 logOutDiv.addEventListener('click', () => {
+    const localUsers = localStorage.getItem('localUsers')
     localStorage.clear();
+    localStorage.setItem('localUsers', localUsers);
     window.location.reload();
 })
 
@@ -58,7 +60,7 @@ loginBtn.addEventListener('click', function(event) {
             const userInfo = exists;
             console.log("Login successful.");
             // Save user info in local storage
-            localStorage.setItem('user', JSON.stringify(userInfo));
+            localStorage.setItem('currentUser', JSON.stringify(userInfo));
             showHomePageScreen();
         } else {
             alertUser("Invalid login details. Please try again.");
@@ -88,25 +90,36 @@ signUpBtn.addEventListener('click', function(event) {
     const username = document.getElementById('signUpUsername').value;
     const password = document.getElementById('signUpPassword').value;
     const email = document.getElementById('signUpEmail').value;
+    // TODO: check if exists
+    const user = { [email]: { username, password } };
 
-    const user = { username, password, email };
+    const localUsers = JSON.parse(localStorage.getItem('localUsers'));
+    if (localUsers) {
+        if (Object.keys(localUsers).includes(email)) {
+            alertUser("Email already exists, please try again.");
+            return;
+        }
+        for (const user of Object.values(localUsers)) {
+            if (user.username === username) {
+                alertUser("Username already exists, please try again.");
+                return;
+            }
+        }
+        localUsers[email] = { username, password };
+        localStorage.setItem('localUsers', JSON.stringify(localUsers));
+        
+    } else {    
+        localStorage.setItem('localUsers', JSON.stringify(user));
+    }
 
-    fetch('./usersDB.json')
-        .then(response => response.json())
-        .then(data => {
-            data.push(user);
-            localStorage.setItem('users', JSON.stringify(data));
-            localStorage.setItem('user', JSON.stringify(user));
-            alertUser("The site is under maintenance, so your details have not been saved in the database, but you can play.");
-            // Reload the page
-            setTimeout(() => {
-                location.reload();
-            }, 5000);
-        })
-        .then(() => {
-            console.log('User added successfully');
-        })
-        .catch(error => console.error('Error adding user:', error));
+    const currentUser = { username, password, email };
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    console.log('User added successfully');
+    alertUser("The site is under maintenance, so your details have not been saved in the database, but you can play.");
+    // Reload the page
+    setTimeout(() => {
+        location.reload();
+    }, 5000);
 });
 
 
@@ -122,14 +135,14 @@ signUpBtn.addEventListener('click', function(event) {
 
 function showHomePageScreen() {
     // in case the user is logged in
-    const user = localStorage.getItem('user');
+    const currentUser = localStorage.getItem('currentUser');
     
     welcomLogoDiv.style.display = 'none';
     
     allFormsDiv.style.display = 'flex';
     logoDiv.style.display = 'flex';
     seasonImagesContainer.style.display = 'flex';
-    if (user) {
+    if (currentUser) {
         showGameSettingsForm();
     } else {
         showLoginForm();
@@ -179,20 +192,17 @@ function alertUser(message) {
 
 
 async function CheckLoginDetails(username, password) {
-    try {
-        const response = await fetch('./usersDB.json');
-        const usersInfo = await response.json();
-
-        // חיפוש המשתמש ברשימה
-        const user = usersInfo.find(user => user.username === username && user.password === password);
-
-        // החזרת אובייקט המשתמש אם נמצא, אחרת החזרת null
-        return user || false;
-    } catch (error) {
-        console.error('Error checking login details:', error);
-        return null;
-    }
-}
+    const localUsers = JSON.parse(localStorage.getItem('localUsers'));
+    if (localUsers) {
+        for (const email of Object.keys(localUsers)) {
+            const user = localUsers[email]
+            if (user.username === username && user.password === password) {
+                user.email = email;
+                return user;
+            };
+        };
+    };
+};
 
 
 
