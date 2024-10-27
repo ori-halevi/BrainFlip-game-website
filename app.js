@@ -49,6 +49,7 @@ welcomLogoDiv.addEventListener('click', function(event) {
     showHomePageScreen();
 })
 
+
 // Login form logic
 loginBtn.addEventListener('click', function(event) {
     event.preventDefault();
@@ -68,12 +69,14 @@ loginBtn.addEventListener('click', function(event) {
     });
 });
 
+
 // Display sign up form
 createAccount.addEventListener('click', function(event) {
     event.preventDefault(); // למנוע מעבר על הקישור
     formLogin.style.display = 'none'; // להסתיר את טופס ההתחברות
     formSignUp.style.display = 'flex'; // להציג את טופס ההרשמה
 });
+
 
 // Display login form again
 backToLogin.addEventListener('click', function(event) {
@@ -83,6 +86,7 @@ backToLogin.addEventListener('click', function(event) {
     document.documentElement.style.setProperty('--forms-font-proportions', '0.5rem');
 });
 
+
 // Sign up form logic
 signUpBtn.addEventListener('click', function(event) {
     event.preventDefault();
@@ -90,31 +94,27 @@ signUpBtn.addEventListener('click', function(event) {
     const username = document.getElementById('signUpUsername').value;
     const password = document.getElementById('signUpPassword').value;
     const email = document.getElementById('signUpEmail').value;
-    // TODO: check if exists
-    const user = { [email]: { username, password } };
 
-    const localUsers = JSON.parse(localStorage.getItem('localUsers'));
-    if (localUsers) {
-        if (Object.keys(localUsers).includes(email)) {
-            alertUser("Email already exists, please try again.");
+    const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
+
+
+    if (Object.keys(localUsers).includes(email)) {
+        alertUser("Email already exists, please try again.");
+        return;
+    }
+    for (const user of Object.values(localUsers)) {
+        if (user.username === username) {
+            alertUser("Username already exists, please try again.");
             return;
         }
-        for (const user of Object.values(localUsers)) {
-            if (user.username === username) {
-                alertUser("Username already exists, please try again.");
-                return;
-            }
-        }
-        localUsers[email] = { username, password };
-        localStorage.setItem('localUsers', JSON.stringify(localUsers));
-        
-    } else {    
-        localStorage.setItem('localUsers', JSON.stringify(user));
     }
+    localUsers[email] = { username, password, 'highest-card-memory-score': 0, 'best-card-memory-average-time-score': "99999999.0s", 'total-card-memory-accumulated-score': 0, 'best-english-average-time-score': "99999999.0s", 'total-english-accumulated-score': 0, 'highest-english-score': 0 };
+    localStorage.setItem('localUsers', JSON.stringify(localUsers));
+    console.log('User added successfully');
 
     const currentUser = { username, password, email };
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
-    console.log('User added successfully');
+
     alertUser("The site is under maintenance, so your details have not been saved in the database, but you can play.");
     // Reload the page
     setTimeout(() => {

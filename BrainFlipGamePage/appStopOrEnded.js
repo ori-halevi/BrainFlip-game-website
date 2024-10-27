@@ -2,8 +2,8 @@
  * Handles the game winning logic and updates the score.
  */
 function handleGameWon() {
-    score += 5 * (5 - difficultyLevel);
-    score = Math.round(score * 1) / 1;
+    addPointsToUserScore(Math.round((5 * (5 - difficultyLevel)) * 1) / 1);
+    handleUpdateScoreInLocalStorage()
     let userHighestScore = localStorage.getItem('userHighestScore');
 
     if (userHighestScore < score) {
@@ -39,18 +39,26 @@ function removePointsFromUserScore(number) {
     }
     score -= numberOfPointsToSubtract;
     updateScoreDisplay();
-
     // צור הודעת הפסד ניקוד
-    showScoreLossMessage(numberOfPointsToSubtract);
+    showScoreLossMessage("-" + numberOfPointsToSubtract);
 }
 
-function showScoreLossMessage(pointsLost) {
-    if (pointsLost <= 0) return;
+function addPointsToUserScore(number) {
+    let numberOfPointsToAdd = number;
+    score += numberOfPointsToAdd;
+    updateScoreDisplay();
+    // צור הודעת הפסד ניקוד
+    showScoreLossMessage("+" + numberOfPointsToAdd);
+}
+
+
+function showScoreLossMessage(pointsLostOrAdded) {
+    if (pointsLostOrAdded <= 0) return;
     // צור אלמנט חדש
     const messageElement = document.createElement('div');
     
     // הוסף טקסט להודעה
-    messageElement.textContent = `-${pointsLost} ⭐`;
+    messageElement.textContent = `${pointsLostOrAdded}⭐`;
     
     // הוסף מחלקה CSS לאלמנט
     messageElement.classList.add('score-loss-message');
@@ -71,6 +79,48 @@ function showScoreLossMessage(pointsLost) {
             messageElement.remove();
         }, 500); // המתנה עד שהאנימציה תסתיים לפני ההסרה
     }, 2000);
+}
+
+function handleUpdateScoreInLocalStorage() {
+    const localUsers = JSON.parse(localStorage.getItem('localUsers'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    
+    if (localUsers) {
+        for (const email of Object.keys(localUsers)) {
+            const user = Object.keys(localUsers);
+            console.log(user);
+            
+            if (email === currentUser.email) {
+                console.log(localStorage.getItem('learnEnglish'));
+                
+                if (localStorage.getItem('learnEnglish') == 'true') {
+                    localUsers[email]['total-english-accumulated-score'] += score;
+                    if (parseFloat(localUsers[email]['best-english-average-time-score'].slice(0, -1)) > parseFloat(avregeTime.slice(0, -1))) {
+                        localUsers[email]['best-english-average-time-score'] = avregeTime;
+                    }
+                    if (localUsers[email]['highest-english-score'] < score) {
+                        localUsers[email]['highest-english-score'] = score;
+                    }
+                } else {
+                    console.log(parseFloat(localUsers[email]['best-card-memory-average-time-score'].slice(0, -1)));
+                    console.log(parseFloat(avregeTime.slice(0, -1)));
+                    localUsers[email]['total-card-memory-accumulated-score'] += score;
+                    if (parseFloat(localUsers[email]['best-card-memory-average-time-score'].slice(0, -1)) > parseFloat(avregeTime.slice(0, -1))) {
+                        localUsers[email]['best-card-memory-average-time-score'] = avregeTime;
+                    }
+                    if (localUsers[email]['highest-card-memory-score'] < score) {
+                        localUsers[email]['highest-card-memory-score'] = score;
+                    }
+                }
+                localStorage.setItem('localUsers', JSON.stringify(localUsers));
+                break;
+            }
+        }
+    } else {
+        console.error('Error: localUsers is null');
+    }
+
 }
 
 

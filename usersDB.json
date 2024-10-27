@@ -1,74 +1,92 @@
 {
-    "somemail@gmail.com": {
-        "username": "Ori",
-        "password": "1234",
-        "highest-score": 311,
-        "total-accumulated-grades": 1200
-    },
     "somemail2@gmail.com": {
         "username": "yossi",
         "password": "4321",
-        "highest-score": 150,
-        "total-accumulated-grades": 890
-    },  
+        "highest-card-memory-score": 150,
+        "highest-english-score": 150,
+        "total-english-accumulated-score": 890,
+        "total-card-memory-accumulated-score": 890,
+        "best-card-memory-average-time-score": "0.5s",
+        "best-english-average-time-score": "0.5s"
+    },
     "lior@mail.com": {
         "username": "lior123",
         "password": "pass123",
-        "highest-score": 200,
-        "total-accumulated-grades": 950
+        "highest-card-memory-score": 200,
+        "highest-english-score": 200,
+        "total-english-accumulated-score": 950,
+        "total-card-memory-accumulated-score": 950,
+        "best-card-memory-average-time-score": "0.5s",
+        "best-english-average-time-score": "0.5s"
     },
     "ronny98@hotmail.com": {
         "username": "ronny98",
         "password": "ronnyStrong98",
-        "highest-score": 120,
-        "total-accumulated-grades": 610
+        "highest-card-memory-score": 120,
+        "highest-english-score": 120,
+        "total-english-accumulated-score": 610,
+        "total-card-memory-accumulated-score": 610,
+        "best-card-memory-average-time-score": "0.5s",
+        "best-english-average-time-score": "0.5s"
     },
     "maya2024@yahoo.com": {
         "username": "maya2024",
         "password": "mayaIsBest",
-        "highest-score": 180,
-        "total-accumulated-grades": 760
-    },
-    "aviking@gmail.com": {
-        "username": "Anya",
-        "password": "12345",
-        "highest-score": 220,
-        "total-accumulated-grades": 940
+        "highest-card-memory-score": 180,
+        "highest-english-score": 180,
+        "total-english-accumulated-score": 760,
+        "total-card-memory-accumulated-score": 760,
+        "best-card-memory-average-time-score": "0.5s",
+        "best-english-average-time-score": "0.5s"
     },
     "eden987@walla.co.il": {
         "username": "eden987",
         "password": "passEden",
-        "highest-score": 190,
-        "total-accumulated-grades": 810
+        "highest-card-memory-score": 190,
+        "highest-english-score": 190,
+        "total-english-accumulated-score": 810,
+        "total-card-memory-accumulated-score": 810,
+        "best-card-memory-average-time-score": "0.5s",
+        "best-english-average-time-score": "0.5s"
     },
     "shiran_super@gmail.com": {
         "username": "shiran_super",
         "password": "shirTop",
-        "highest-score": 160,
-        "total-accumulated-grades": 680
-    },
-    "danman123@outlook.com": {
-        "username": "Omer",
-        "password": "dannyPass",
-        "highest-score": 250,
-        "total-accumulated-grades": 1120
+        "highest-card-memory-score": 160,
+        "highest-english-score": 160,
+        "total-english-accumulated-score": 680,
+        "total-card-memory-accumulated-score": 680,
+        "best-card-memory-average-time-score": "0.5s",
+        "best-english-average-time-score": "0.5s"
     },
     "gilad1@ynet.co.il": {
         "username": "gilad123",
         "password": "giladStrong",
-        "highest-score": 170,
-        "total-accumulated-grades": 770
+        "highest-card-memory-score": 170,
+        "highest-english-score": 170,
+        "total-english-accumulated-score": 770,
+        "total-card-memory-accumulated-score": 770,
+        "best-card-memory-average-time-score": "0.5s",
+        "best-english-average-time-score": "0.5s"
     },
     "neta_cool@israelmail.com": {
         "username": "netaCool",
         "password": "coolPass2024",
-        "highest-score": 140,
-        "total-accumulated-grades": 640
+        "highest-card-memory-score": 140,
+        "highest-english-score": 140,
+        "total-english-accumulated-score": 640,
+        "total-card-memory-accumulated-score": 640,
+        "best-card-memory-average-time-score": "0.5s",
+        "best-english-average-time-score": "0.5s"
     },
     "omerZ@gmail.com": {
         "username": "omerZ",
         "password": "zomer234",
-        "highest-score": 130,
-        "total-accumulated-grades": 610
+        "highest-card-memory-score": 130,
+        "highest-english-score": 130,
+        "total-english-accumulated-score": 610,
+        "total-card-memory-accumulated-score": 610,
+        "best-card-memory-average-time-score": "0.5s",
+        "best-english-average-time-score": "0.5s"
     }
 }

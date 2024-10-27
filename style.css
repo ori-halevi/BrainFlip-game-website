@@ -231,6 +231,11 @@ body {
 @media (max-width: 480px) {
     #logo {
         font-size: 5rem; /* התאמת גודל הפונט למסכים קטנים */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #logo-weird-space {
+        display: none;
     }
 }
 

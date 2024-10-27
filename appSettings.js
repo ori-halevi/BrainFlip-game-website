@@ -64,30 +64,44 @@ startGameBtn.addEventListener("click", async function (event) {
 
 async function loadTopTen() {
     const users = await loadUsers();
+    
     console.log(users);
+    // יצירת מערך משתמשים מהאובייקט
+    const userArray = Object.values(users);
     
-    const topTenUsers = users.sort((a, b) => b["highest-score"] - a["highest-score"]).slice(0, 10);
-    console.log(topTenUsers);
-    
-    // Display the names and scores of the ten users with the highest scores
-    document.getElementById("scoreboardList").innerHTML = ''; // Clear the previous list of users
+    // סינון המשתמשים לפי score גבוה
+    const topTenUsers = userArray
+        .sort((a, b) => b["highest-card-memory-score"] - a["highest-card-memory-score"])
+        .slice(0, 10);
+
+    // הצגת שמות וניקוד של עשרת המשתמשים עם הניקוד הגבוה ביותר
+    document.getElementById("scoreboardList").innerHTML = ''; // ניקוי רשימה קיימת
     topTenUsers.forEach(user => {
         const li = document.createElement("li");
-        li.textContent = `${user["highest-score"]}⭐: ${user.username}`;
+        li.textContent = `${user["highest-card-memory-score"]}⭐: ${user.username}`;
         document.getElementById("scoreboardList").appendChild(li);
     });
 }
+
 
 async function loadUsers() {
     try {
         const response = await fetch('./usersDB.json');
         const data = await response.json();
-        return data;
+
+        // איסוף משתמשים מ-localStorage
+        const localUsers = JSON.parse(localStorage.getItem('localUsers')) || {};
+
+        // שילוב של משתמשים מהקובץ ומהאחסון המקומי
+        const combinedUsers = Object.assign({}, data, localUsers);
+        return combinedUsers;
     } catch (error) {
         console.error('Error loading users:', error);
         return null;  // Return null in case of error
     }
 }
+
+
 
 async function updateLocalStorage() {
     localStorage.setItem("cardsAmount", cardsAmount.value);

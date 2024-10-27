@@ -5,7 +5,7 @@ let secondsElapsed = 0;
 let remainingTime = timeLimit - secondsElapsed;
 let secondsPassed = 0;
 const timerDiv = document.getElementById('timerDiv');
-let avregeTime = (((secondsElapsed % 60) / cardsAmount).toFixed(2)) + "s";
+let avregeTime = (((secondsElapsed / cardsAmount) % 60).toFixed(2)) + "s";
 console.log(difficultyLevel);
 
 // const timerH1 = document.createElement('timerH1');
@@ -36,7 +36,7 @@ function displayTimer() {
     remainingTime = timeLimit - secondsElapsed;
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
-    avregeTime = (((secondsElapsed % 60) / cardsAmount).toFixed(2)) + "s";
+    avregeTime = (((secondsElapsed / cardsAmount) % 60).toFixed(2)) + "s";
     
     // timerH1.textContent = "time:"
     // timerDiv.appendChild(timerH1);
