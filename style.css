@@ -231,6 +231,8 @@ body {
 @media (max-width: 480px) {
     #logo {
         font-size: 5rem; /* התאמת גודל הפונט למסכים קטנים */
+    }
+    .logo-in-big-display {
         flex-wrap: wrap;
         justify-content: center;
     }
