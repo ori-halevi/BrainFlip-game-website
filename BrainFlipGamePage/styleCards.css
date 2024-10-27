@@ -157,7 +157,7 @@
         height: 100%;
         /* height: 300px; */
         width: 100vw;
-        grid-template-columns: repeat(calc(var(--number-of-rows) + calc(var(--number-of-columns) / 8)), calc(var(--card-width) / calc(var(--number-of-cards) / calc(var(--card-height-and-width) - 5))));
+        grid-template-columns: repeat(calc(var(--number-of-rows) + calc(var(--number-of-columns) / 6.6)), calc(var(--card-width) / calc(var(--number-of-cards) / calc(var(--card-height-and-width) - 5))));
         grid-template-rows: repeat(calc(var(--number-of-columns) - calc(var(--number-of-columns) / 4)), calc(var(--card-height) / calc(var(--number-of-cards) / calc(var(--card-height-and-width) - 5))));
         row-gap: 5px;
     }
