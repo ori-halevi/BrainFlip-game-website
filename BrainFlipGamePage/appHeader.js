@@ -1,6 +1,7 @@
 const movesLeftDiv = document.getElementById('movesLeftDiv');
 const scoreDiv = document.getElementById('scoreDiv');
 const pauseDiv = document.getElementById('pauseDiv');
+const pauseBtn = document.getElementById('pauseBtn');
 
 const movesLeftIconDiv = document.createElement('div');
 movesLeftIconDiv.classList.add('moves-left-icon-div');
@@ -28,7 +29,7 @@ function updateScoreDisplay() {
     scoreDiv.appendChild(scoreP);
 }
 
-pauseDiv.addEventListener('click', () => {
+pauseBtn.addEventListener('click', () => {
     removePointsFromUserScore(2);
     pauseGameTimer();
     gameAudio.pause();
