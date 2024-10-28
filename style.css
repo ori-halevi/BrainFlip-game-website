@@ -514,6 +514,8 @@ input:checked + .toggle-switch-slider:before {
 
 #footerDiv {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     /* position: absolute; */
     /* bottom: 0; */
     width: 100%;
@@ -521,8 +523,7 @@ input:checked + .toggle-switch-slider:before {
 }
 @media (max-width: 480px) {
     #footerDiv {
-        flex-direction: column;
-        align-items: center;
         padding: 10px;
+        padding-bottom: 50px;
     }
 }

@@ -17,8 +17,6 @@ function startGameTimer() {
     timerInterval = setInterval(() => {
         secondsElapsed++;
         secondsElapsedAsString = convertTimeToString(secondsElapsed);
-        console.log(secondsElapsed);
-        console.log(secondsElapsedAsString);
         avregeTime = parseFloat(((secondsElapsed / cardsAmount) % 60).toFixed(2));
         avregeTimeAsString = ((secondsElapsed / cardsAmount) % 60).toFixed(2) + "s";
         remainingTime = timeLimit - secondsElapsed;

@@ -37,7 +37,7 @@ pauseBtn.addEventListener('click', () => {
         "Game paused",
         "Gotta pee, huh?",
         false,
-        "Your score so far: " + score + " ⭐",
+        "Your score so far: " + score + "⭐",
         "Remaining moves: " + numberOfTurns,
         "Time: " + secondsElapsedAsString + "/" + timeLimitAsString);
 })

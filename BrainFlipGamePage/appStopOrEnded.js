@@ -2,24 +2,25 @@
  * Handles the game winning logic and updates the score.
  */
 function handleGameWon() {
-    addPointsToUserScore((5 * (5 - difficultyLevel) * 1) / 1);
-    handleUpdateScoreInLocalStorage()
-    let userHighestScore = localStorage.getItem('userHighestScore');
-
-    if (userHighestScore < score) {
-        localStorage.setItem('userHighestScore', score);
-    }
     console.log("You won!");
+
 
     // Stop the game timer
     stopGameTimer();
     setTimeout(() => {
         gameAudio.pause();
+        addPointsToUserScore((5 * (5 - difficultyLevel) * 1) / 1);
+        handleUpdateScoreInLocalStorage()
+        let userHighestScore = localStorage.getItem('userHighestScore');
+    
+        if (userHighestScore < score) {
+            localStorage.setItem('userHighestScore', score);
+        }
         createScreenOnTheGame("green",
             "Game won",
             "You won!",
             true,
-            "Your score: " + score + " ⭐",
+            "Your score: " + score + "⭐",
             "Remaining moves: " + numberOfTurns,
             "Time: " + secondsElapsedAsString + "/" + timeLimitAsString,
             "Avrege time: " + avregeTimeAsString);
@@ -37,7 +38,7 @@ function handleGameLost(subTitle = "You lost!") {
         "Game lost",
         subTitle,
         true,
-        "Your score: " + score + " ⭐",
+        "Your score: " + score + "⭐",
         "Matches: " + matchs,
         "Avrege time: " + avregeTimeAsString);
 }
@@ -47,11 +48,12 @@ function handleGameLost(subTitle = "You lost!") {
 function removePointsFromUserScore(number) {
     let numberOfPointsToSubtract = Math.round(number);
     // Check if the reduction will cause the score to drop below zero
-    if (score = 0) {
+    if (score == 0) {
         return;
     }
     if (score < numberOfPointsToSubtract) {
         numberOfPointsToSubtract = score;
+        
     }
     score -= numberOfPointsToSubtract;
     updateScoreDisplay();
@@ -60,6 +62,7 @@ function removePointsFromUserScore(number) {
 }
 
 function addPointsToUserScore(number) {
+    if (number <= 0) return;
     let numberOfPointsToAdd = Math.round(number);
     score += numberOfPointsToAdd;
     updateScoreDisplay();
@@ -69,7 +72,9 @@ function addPointsToUserScore(number) {
 
 
 function showScoreLossMessage(pointsLostOrAdded) {
-    if (pointsLostOrAdded <= 0) return;
+    document.querySelectorAll('.score-message').forEach(message => {
+        message.classList.remove('fade-in')
+    })
     // צור אלמנט חדש
     const messageElement = document.createElement('div');
     
@@ -77,7 +82,7 @@ function showScoreLossMessage(pointsLostOrAdded) {
     messageElement.textContent = `${pointsLostOrAdded}⭐`;
     
     // הוסף מחלקה CSS לאלמנט
-    messageElement.classList.add('score-loss-message');
+    messageElement.classList.add('score-message');
 
     // הוסף את האלמנט לגוף הדף
     document.body.appendChild(messageElement);
@@ -94,7 +99,7 @@ function showScoreLossMessage(pointsLostOrAdded) {
         setTimeout(() => {
             messageElement.remove();
         }, 500); // המתנה עד שהאנימציה תסתיים לפני ההסרה
-    }, 2000);
+    }, 1000);
 }
 
 function handleUpdateScoreInLocalStorage() {
