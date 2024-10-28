@@ -2,7 +2,7 @@
  * Handles the game winning logic and updates the score.
  */
 function handleGameWon() {
-    addPointsToUserScore(Math.round((5 * (5 - difficultyLevel)) * 1) / 1);
+    addPointsToUserScore((5 * (5 - difficultyLevel) * 1) / 1);
     handleUpdateScoreInLocalStorage()
     let userHighestScore = localStorage.getItem('userHighestScore');
 
@@ -15,7 +15,14 @@ function handleGameWon() {
     stopGameTimer();
     setTimeout(() => {
         gameAudio.pause();
-        createScreenOnTheGame("green", "Game won", "You won!", true, "Your score: " + score + " ⭐", "Remaining moves: " + numberOfTurns, "Time: " + timerP.textContent + "/" + timeLimitInMinutes + "s", "Avrege time: " + avregeTime);
+        createScreenOnTheGame("green",
+            "Game won",
+            "You won!",
+            true,
+            "Your score: " + score + " ⭐",
+            "Remaining moves: " + numberOfTurns,
+            "Time: " + secondsElapsedAsString + "/" + timeLimitAsString,
+            "Avrege time: " + avregeTimeAsString);
     }, 1300);
 }
 
@@ -26,15 +33,24 @@ function handleGameLost(subTitle = "You lost!") {
     stopGameTimer();
     gameAudio.pause();
     removePointsFromUserScore(score / 2);
-    createScreenOnTheGame("red", "Game lost", subTitle, true, "Your score: " + score + " ⭐", "Matches: " + matchs, "Avrege time: " + avregeTime);
+    createScreenOnTheGame("red",
+        "Game lost",
+        subTitle,
+        true,
+        "Your score: " + score + " ⭐",
+        "Matches: " + matchs,
+        "Avrege time: " + avregeTimeAsString);
 }
 
 
 
 function removePointsFromUserScore(number) {
-    let numberOfPointsToSubtract = number;
+    let numberOfPointsToSubtract = Math.round(number);
     // Check if the reduction will cause the score to drop below zero
-    if (score < number) {
+    if (score = 0) {
+        return;
+    }
+    if (score < numberOfPointsToSubtract) {
         numberOfPointsToSubtract = score;
     }
     score -= numberOfPointsToSubtract;
@@ -44,7 +60,7 @@ function removePointsFromUserScore(number) {
 }
 
 function addPointsToUserScore(number) {
-    let numberOfPointsToAdd = number;
+    let numberOfPointsToAdd = Math.round(number);
     score += numberOfPointsToAdd;
     updateScoreDisplay();
     // צור הודעת הפסד ניקוד
@@ -84,7 +100,7 @@ function showScoreLossMessage(pointsLostOrAdded) {
 function handleUpdateScoreInLocalStorage() {
     const localUsers = JSON.parse(localStorage.getItem('localUsers'));
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    
+        
     
     if (localUsers) {
         for (const email of Object.keys(localUsers)) {
@@ -96,18 +112,16 @@ function handleUpdateScoreInLocalStorage() {
                 
                 if (localStorage.getItem('learnEnglish') == 'true') {
                     localUsers[email]['total-english-accumulated-score'] += score;
-                    if (parseFloat(localUsers[email]['best-english-average-time-score'].slice(0, -1)) > parseFloat(avregeTime.slice(0, -1))) {
-                        localUsers[email]['best-english-average-time-score'] = avregeTime;
+                    if (parseFloat(localUsers[email]['best-english-average-time-score'].slice(0, -1)) > avregeTime) {
+                        localUsers[email]['best-english-average-time-score'] = avregeTimeAsString;
                     }
                     if (localUsers[email]['highest-english-score'] < score) {
                         localUsers[email]['highest-english-score'] = score;
                     }
                 } else {
-                    console.log(parseFloat(localUsers[email]['best-card-memory-average-time-score'].slice(0, -1)));
-                    console.log(parseFloat(avregeTime.slice(0, -1)));
                     localUsers[email]['total-card-memory-accumulated-score'] += score;
-                    if (parseFloat(localUsers[email]['best-card-memory-average-time-score'].slice(0, -1)) > parseFloat(avregeTime.slice(0, -1))) {
-                        localUsers[email]['best-card-memory-average-time-score'] = avregeTime;
+                    if (parseFloat(localUsers[email]['best-card-memory-average-time-score'].slice(0, -1)) > avregeTime) {
+                        localUsers[email]['best-card-memory-average-time-score'] = avregeTimeAsString;
                     }
                     if (localUsers[email]['highest-card-memory-score'] < score) {
                         localUsers[email]['highest-card-memory-score'] = score;

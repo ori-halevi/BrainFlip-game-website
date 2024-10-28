@@ -53,9 +53,10 @@ welcomLogoDiv.addEventListener('click', function(event) {
 // Login form logic
 loginBtn.addEventListener('click', function(event) {
     event.preventDefault();
-    if (!validateLoginForm()) return;
     const username = document.getElementById('loginUsername').value;
     const password = document.getElementById('loginPassword').value;
+    if (!validateLoginForm(username, password)) return;
+
     CheckLoginDetails(username, password).then(exists => {
         if (exists) {
             const userInfo = exists;
@@ -90,10 +91,10 @@ backToLogin.addEventListener('click', function(event) {
 // Sign up form logic
 signUpBtn.addEventListener('click', function(event) {
     event.preventDefault();
-    if (!validateSignUpForm()) return;
     const username = document.getElementById('signUpUsername').value;
     const password = document.getElementById('signUpPassword').value;
     const email = document.getElementById('signUpEmail').value;
+    if (!validateSignUpForm(username, email, password)) return;
 
     const localUsers = JSON.parse(localStorage.getItem('localUsers') || '{}');
 

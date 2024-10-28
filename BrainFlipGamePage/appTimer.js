@@ -1,29 +1,28 @@
-let timerInterval;
+const timerP = document.getElementById('timerP');
+
+let timerInterval, remainingTimeAsString, avregeTime, avregeTimeAsString;
 let secondsElapsed = 0;
-// const timeLimit = localStorage.getItem('timeLimit') * 60;
+let secondsElapsedAsString = 0;
 
-let remainingTime = timeLimit - secondsElapsed;
-let secondsPassed = 0;
-const timerDiv = document.getElementById('timerDiv');
-let avregeTime = (((secondsElapsed / cardsAmount) % 60).toFixed(2)) + "s";
-console.log(difficultyLevel);
-
-// const timerH1 = document.createElement('timerH1');
-const timerIconDiv = document.createElement('div');
-timerIconDiv.classList.add('timer-icon-div');
-const timerP = document.createElement('timerP');
-timerP.classList.add('timer-p');
 
 /**
  * Starts the game timer when the game page is loaded.
  */
 function startGameTimer() {
     if (isNaN(timeLimit)) {
-        timeLimit = 300; // Default to 5 minutes if timeLimit is not set or invalid
+        console.error('Invalid time limit');
+        return;
     }
 
     timerInterval = setInterval(() => {
         secondsElapsed++;
+        secondsElapsedAsString = convertTimeToString(secondsElapsed);
+        console.log(secondsElapsed);
+        console.log(secondsElapsedAsString);
+        avregeTime = parseFloat(((secondsElapsed / cardsAmount) % 60).toFixed(2));
+        avregeTimeAsString = ((secondsElapsed / cardsAmount) % 60).toFixed(2) + "s";
+        remainingTime = timeLimit - secondsElapsed;
+        remainingTimeAsString = convertTimeToString(remainingTime);
         displayTimer(); // Added to update the display each second
         checkIfTimeUp();
     }, 1000); // Every 1 second
@@ -33,16 +32,14 @@ function startGameTimer() {
  * Displays the remaining time on the screen.
  */
 function displayTimer() {
-    remainingTime = timeLimit - secondsElapsed;
-    const minutes = Math.floor(remainingTime / 60);
-    const seconds = remainingTime % 60;
-    avregeTime = (((secondsElapsed / cardsAmount) % 60).toFixed(2)) + "s";
-    
-    // timerH1.textContent = "time:"
-    // timerDiv.appendChild(timerH1);
-    timerDiv.appendChild(timerIconDiv);
-    timerP.textContent = `${minutes}m ${seconds}s`;
-    timerDiv.appendChild(timerP);
+    remainingTimeAsString = convertTimeToString(remainingTime);
+    timerP.textContent = remainingTimeAsString;
+}
+
+function convertTimeToString(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes}m ${seconds}s`;
 }
 
 /**

@@ -17,7 +17,7 @@ const mediumMode = 1.5;
 const hardMode = 1.25;
 
 const baseTimePerCard = 10;
-let difficultyLevel, timeLimit, timeLimitInMinutes, numberOfTurns;
+let difficultyLevel, timeLimit, timeLimitAsString, remainingTime, numberOfTurns;
 
 let previousCardInfo = [null, null];
 let currentCardInfo = [null, null];
@@ -39,7 +39,7 @@ async function initialGame() {
     loadTheme();
     gameAudio.play();
     gameAudio.volume = 0.4;
-    setDifficulty();
+    setDifficultySettings();
     if (localStorage.getItem("learnEnglish") === "true") {
         await loadLearnEnglishDictionaryToLocalStotrage().then(() => {
             MainSpreadCards();
@@ -54,18 +54,11 @@ async function initialGame() {
     updateScoreDisplay();
     displayTimer();
 
-    // setTimeout(function() {
-    //     window.scrollBy({ top: 100, behavior: 'smooth' }); // גולל את העמוד 20 פיקסלים למטה
-    // }, 500); // 500 מילישניות
-    // setTimeout(function() {
-    //     window.scrollBy({ top: -100, behavior: 'smooth' }); // גולל את העמוד 20 פיקסלים למטה
-    // }, 1000); // 500 מילישניות
-
 };
 
 
 
-function setDifficulty() {
+function setDifficultySettings() {
     if (localStorage.getItem('difficulty') === 'easy') {
         difficultyLevel = easyMode;
     } else if (localStorage.getItem('difficulty') === 'medium') {
@@ -78,13 +71,11 @@ function setDifficulty() {
 
     // חישוב כמות התורות המותרת
     numberOfTurns = difficultyLevel * (cardsAmount * 2);
-    
     // חישוב זמן מוקצב
     timeLimit = difficultyLevel * (cardsAmount * baseTimePerCard);
-    timeLimitInMinutes = timeLimit;
-    if (timeLimit > 60) {
-        timeLimitInMinutes = (timeLimit / 60).toFixed(2);
-    }
+    timeLimitAsString = convertTimeToString(timeLimit);
+    remainingTime = timeLimit;
+
 }
 
 
@@ -270,9 +261,8 @@ function handleSecondCardClick() {
                 //     card.classList.remove('green-border');
                 // }, 1000);
             }
-        })
-        score += 21 - (timeLimit / 60) + (cardsAmount - 10);
-        score = Math.round(score * 1) / 1;
+        });
+        addPointsToUserScore(21 - (timeLimit / 60) + (cardsAmount - 10))
         updateScoreDisplay();
         matchs++;
         

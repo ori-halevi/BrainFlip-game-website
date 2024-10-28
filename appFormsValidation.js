@@ -1,13 +1,11 @@
-function validateLoginForm() {
-    const username = document.getElementById('loginUsername').value.trim();
-    const password = document.getElementById('loginPassword').value.trim();
-    
-    if (username === "") {
+function validateLoginForm(username, password) {
+    // trim is used to remove any leading or trailing spaces
+    if (username.trim() === "") {
         alertUser("Please enter your username.");
         return false;
     }
     
-    if (password === "") {
+    if (password.trim() === "") {
         alertUser("Please enter your password.");
         return false;
     } 
@@ -16,17 +14,13 @@ function validateLoginForm() {
 
 
 
-function validateSignUpForm() {
-    const username = document.getElementById('signUpUsername').value.trim();
-    const email = document.getElementById('signUpEmail').value.trim();
-    const password = document.getElementById('signUpPassword').value.trim();
-
-    if (username === "") {
+function validateSignUpForm(username, email, password) {
+    if (username.trim() === "") {
         alertUser("Please enter your username.");
         return false;
     }
 
-    if (email === "") {
+    if (email.trim() === "") {
         alertUser("Please enter your email.");
         return false;
     } else {
@@ -38,7 +32,7 @@ function validateSignUpForm() {
         }
     }
 
-    if (password === "") {
+    if (password.trim() === "") {
         alertUser("Please enter your password.");
         return false;
     }

@@ -1,5 +1,4 @@
 // This script deal with the learn English dictionary
-
 async function getEngHebDictionary() {
     try {
         const response = await fetch('../eng-heb-dict.json');
